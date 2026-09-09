@@ -1,32 +1,420 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI Receptionist Demo</title>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GökYüzü Emlak | AI Asistan</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f7f6;color:#172018}.wrap{max-width:760px;margin:auto;padding:20px}
-.brand{font-weight:800;font-size:20px}.sub{color:#69736c;font-size:14px;margin:5px 0 18px}
-.card{background:#fff;border:1px solid #e1e6e2;border-radius:22px;overflow:hidden;box-shadow:0 12px 35px rgba(20,30,20,.08)}
-.head{padding:20px;border-bottom:1px solid #e8ece9}.head strong{font-size:18px}.status{font-size:12px;margin-top:5px}
-.chat{height:500px;padding:18px;overflow:auto;background:#fbfcfb}.msg{max-width:82%;padding:12px 14px;border-radius:16px;margin:10px 0;line-height:1.45;font-size:14px}
-.bot{background:#eef4ef;border-bottom-left-radius:5px}.user{background:#172018;color:#fff;margin-left:auto;border-bottom-right-radius:5px}
-.quick{display:flex;gap:8px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid #e8ece9}.quick button{border:1px solid #cfd8d1;background:#fff;border-radius:999px;padding:9px 12px;font-weight:600}
-.input{display:flex;gap:8px;padding:14px;border-top:1px solid #e8ece9}.input input{flex:1;padding:13px;border:1px solid #cfd8d1;border-radius:13px;font-size:14px}.input button{border:0;background:#172018;color:#fff;border-radius:13px;padding:0 18px;font-weight:800}
-.note{font-size:12px;color:#7a827c;text-align:center;padding:14px}
-</style></head>
-<body><div class="wrap"><div class="brand">AI Receptionist Demo</div><div class="sub">Dental clinic • patient enquiry assistant</div>
-<div class="card"><div class="head"><strong>Clinic Assistant</strong><div class="status">● Online — replies instantly</div></div>
-<div id="chat" class="chat"><div class="msg bot">Hi! 👋 I'm the clinic's virtual receptionist. I can answer common questions and collect appointment requests. How can I help?</div></div>
-<div class="quick"><button onclick="quick('I want to book an appointment')">Book appointment</button><button onclick="quick('What are your opening hours?')">Opening hours</button><button onclick="quick('How much is a consultation?')">Pricing</button></div>
-<div class="input"><input id="inp" placeholder="Type your question..." onkeydown="if(event.key==='Enter')send()"><button onclick="send()">Send</button></div>
-<div class="note">Demo prototype — clinic-specific answers and booking integration would be configured for the client.</div></div></div>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f7fa;
+color:#172018;
+}
+
+.app{
+max-width:520px;
+margin:auto;
+min-height:100vh;
+background:white;
+display:flex;
+flex-direction:column;
+}
+
+.header{
+background:#172018;
+color:white;
+padding:22px 20px;
+}
+
+.brand{
+font-size:24px;
+font-weight:800;
+}
+
+.sub{
+font-size:13px;
+opacity:.75;
+margin-top:5px;
+}
+
+.status{
+margin-top:14px;
+font-size:13px;
+}
+
+.dot{
+display:inline-block;
+width:8px;
+height:8px;
+background:#48d597;
+border-radius:50%;
+margin-right:6px;
+}
+
+.chat{
+flex:1;
+padding:18px;
+overflow:auto;
+min-height:470px;
+}
+
+.message{
+max-width:84%;
+padding:13px 15px;
+border-radius:16px;
+margin:10px 0;
+line-height:1.45;
+font-size:14px;
+}
+
+.bot{
+background:#eef2ed;
+border-bottom-left-radius:5px;
+}
+
+.user{
+background:#172018;
+color:white;
+margin-left:auto;
+border-bottom-right-radius:5px;
+}
+
+.quick{
+display:flex;
+gap:8px;
+overflow-x:auto;
+padding:8px 18px;
+}
+
+.quick button{
+white-space:nowrap;
+border:1px solid #d8ded9;
+background:white;
+padding:10px 13px;
+border-radius:20px;
+font-size:13px;
+}
+
+.inputArea{
+padding:12px 16px 18px;
+border-top:1px solid #e5e8e5;
+display:flex;
+gap:8px;
+}
+
+input{
+flex:1;
+border:1px solid #d8ded9;
+border-radius:14px;
+padding:14px;
+font-size:14px;
+outline:none;
+}
+
+.send{
+background:#172018;
+color:white;
+border:0;
+padding:0 18px;
+border-radius:14px;
+font-weight:bold;
+}
+
+.card{
+background:white;
+border:1px solid #dfe4df;
+border-radius:15px;
+padding:14px;
+margin-top:8px;
+}
+
+.cardTitle{
+font-weight:bold;
+font-size:15px;
+}
+
+.cardInfo{
+font-size:13px;
+color:#667066;
+margin-top:5px;
+}
+
+.cta{
+display:block;
+width:100%;
+margin-top:10px;
+padding:11px;
+border:0;
+border-radius:10px;
+background:#172018;
+color:white;
+font-weight:bold;
+}
+
+.small{
+font-size:12px;
+color:#788078;
+margin-top:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="header">
+<div class="brand">GökYüzü Emlak</div>
+<div class="sub">Yapay Zeka Emlak Asistanı</div>
+<div class="status">
+<span class="dot"></span>Çevrimiçi · 7/24 yardımcı olur
+</div>
+</header>
+
+<main class="chat" id="chat">
+
+<div class="message bot">
+Merhaba 👋 Ben GökYüzü Emlak'ın yapay zeka asistanıyım.<br><br>
+Size <b>satılık veya kiralık</b> gayrimenkul bulabilir, bütçenize ve ihtiyaçlarınıza göre seçenekleri daraltabilir ve <b>ev gösterimi talebi</b> oluşturabilirim.
+<br><br>
+Nasıl yardımcı olabilirim?
+</div>
+
+</main>
+
+<div class="quick">
+<button onclick="quick('Satılık ev arıyorum')">🏠 Satılık</button>
+<button onclick="quick('Kiralık ev arıyorum')">🔑 Kiralık</button>
+<button onclick="quick('Yatırım için ev arıyorum')">📈 Yatırım</button>
+<button onclick="quick('Ev göstermek istiyorum')">📅 Ev gösterimi</button>
+</div>
+
+<div class="inputArea">
+<input id="input" placeholder="Örneğin: Ankara'da 3+1 ev arıyorum..." />
+<button class="send" onclick="send()">Gönder</button>
+</div>
+
+</div>
+
 <script>
-const chat=document.getElementById('chat'),inp=document.getElementById('inp');
-function add(t,w){let d=document.createElement('div');d.className='msg '+w;d.textContent=t;chat.appendChild(d);chat.scrollTop=chat.scrollHeight}
-function reply(q){q=q.toLowerCase();
-if(q.includes('book')||q.includes('appointment'))return"Absolutely. I can collect your preferred day, preferred time and contact details, then send the request to the clinic team. What day would you prefer?";
-if(q.includes('hour')||q.includes('open')||q.includes('when'))return"The clinic's opening hours can be configured here. For this demo, I'll collect your question and the clinic team can confirm exact availability.";
-if(q.includes('price')||q.includes('cost')||q.includes('how much'))return"Pricing depends on the treatment. I can provide the clinic's approved price information and collect your details if you'd like a consultation.";
-if(q.includes('emergency')||q.includes('pain'))return"If you have a dental emergency or severe pain, please contact the clinic directly or seek urgent medical care.";
-return"Thanks! I can help with common clinic questions and appointment requests. If I don't have an approved answer, I'll collect your details and pass the enquiry to the clinic team."}
-function send(){let v=inp.value.trim();if(!v)return;add(v,'user');inp.value='';setTimeout(()=>add(reply(v),'bot'),450)}
-function quick(v){inp.value=v;send()}
-</script></body></html>
+
+const chat=document.getElementById("chat");
+const input=document.getElementById("input");
+
+function addMessage(text,type="bot"){
+const div=document.createElement("div");
+div.className="message "+type;
+div.innerHTML=text;
+chat.appendChild(div);
+chat.scrollTop=chat.scrollHeight;
+}
+
+function quick(text){
+input.value=text;
+send();
+}
+
+function send(){
+
+const text=input.value.trim();
+
+if(!text)return;
+
+addMessage(text,"user");
+input.value="";
+
+setTimeout(()=>{
+answer(text.toLowerCase());
+},500);
+
+}
+
+function answer(q){
+
+/* SATILIK */
+
+if(q.includes("satılık") || q.includes("satilik")){
+
+addMessage(`
+Harika. Size uygun satılık ilanları bulabilmem için birkaç bilgi alayım. 🏠<br><br>
+<b>Hangi bölgeyi düşünüyorsunuz?</b><br>
+Örneğin: Çankaya, Keçiören, Etimesgut...
+`);
+
+return;
+}
+
+/* KİRALIK */
+
+if(q.includes("kiralık") || q.includes("kiralik")){
+
+addMessage(`
+Tabii 🔑 Kiralık konut arayabiliriz.<br><br>
+Öncelikle <b>bölge</b> ve yaklaşık <b>aylık bütçenizi</b> öğrenebilir miyim?<br><br>
+Örneğin: “Çankaya, 30.000 TL'ye kadar”
+`);
+
+return;
+}
+
+/* YATIRIM */
+
+if(q.includes("yatırım") || q.includes("yatirim")){
+
+addMessage(`
+Yatırım amacıyla gayrimenkul bakıyorsanız size daha hedefli yardımcı olabilirim. 📈<br><br>
+<b>Yaklaşık yatırım bütçeniz nedir?</b><br>
+Ayrıca önceliğiniz kira getirisi mi, değer artışı mı?
+`);
+
+return;
+}
+
+/* EV GÖSTERİMİ */
+
+if(q.includes("göster") || q.includes("goster") || q.includes("randevu")){
+
+addMessage(`
+Elbette 📅 Bir ev gösterimi talebi oluşturabiliriz.<br><br>
+Size uygun gün ve saati belirtmeniz yeterli.<br><br>
+Örneğin: <b>“Cumartesi 14:00”</b>
+`);
+
+return;
+}
+
+/* BÜTÇE */
+
+if(q.includes("tl") || q.includes("bütçe") || q.includes("butce")){
+
+addMessage(`
+Anladım. Bütçenizi not aldım. 💰<br><br>
+
+Size uygun seçenekleri daraltmak için şimdi <b>oda sayısını</b> öğrenelim.<br><br>
+
+1+1 · 2+1 · 3+1 · 4+1 veya farklı bir seçenek?
+`);
+
+return;
+}
+
+/* ODA */
+
+if(
+q.includes("1+1") ||
+q.includes("2+1") ||
+q.includes("3+1") ||
+q.includes("4+1")
+){
+
+addMessage(`
+Mükemmel. Oda tercihinizi de not aldım. 🏠<br><br>
+
+İsterseniz size örnek seçenekleri gösterebilirim:
+`);
+
+showProperties();
+
+return;
+}
+
+/* BÖLGE */
+
+if(
+q.includes("ankara") ||
+q.includes("çankaya") ||
+q.includes("cankaya") ||
+q.includes("keçiören") ||
+q.includes("kecioren") ||
+q.includes("etimesgut")
+){
+
+addMessage(`
+Bölge tercihinizi aldım. 📍<br><br>
+
+Size daha isabetli seçenekler sunabilmem için <b>bütçenizi</b> ve <b>oda sayınızı</b> yazabilirsiniz.
+<br><br>
+Örneğin: <b>“3+1, 4 milyon TL”</b>
+`);
+
+return;
+}
+
+/* GENEL */
+
+addMessage(`
+Tabii, yardımcı olayım. 😊<br><br>
+
+Şunlardan birini yazabilirsiniz:<br><br>
+🏠 “Çankaya'da satılık 3+1 arıyorum”<br>
+🔑 “30.000 TL'ye kadar kiralık ev”<br>
+📈 “5 milyon TL yatırım bütçem var”<br>
+📅 “Cumartesi ev görmek istiyorum”
+`);
+
+}
+
+function showProperties(){
+
+setTimeout(()=>{
+
+addMessage(`
+<div class="card">
+<div class="cardTitle">🏠 Örnek İlan · Modern 3+1</div>
+<div class="cardInfo">
+145 m² · 3+1 · Otopark · Balkon<br>
+📍 Çankaya
+</div>
+<button class="cta" onclick="request()">Bu ilanla ilgileniyorum</button>
+</div>
+
+<div class="card">
+<div class="cardTitle">🏠 Örnek İlan · Yeni 2+1</div>
+<div class="cardInfo">
+105 m² · 2+1 · Asansör · Yeni bina<br>
+📍 Etimesgut
+</div>
+<button class="cta" onclick="request()">Bu ilanla ilgileniyorum</button>
+</div>
+
+<div class="small">
+* Bu ekran demo amaçlıdır. Gerçek ilanlar sisteme bağlandığında otomatik olarak gösterilebilir.
+</div>
+`);
+
+},400);
+
+}
+
+function request(){
+
+addMessage("Bu ilanla ilgileniyorum.","user");
+
+setTimeout(()=>{
+
+addMessage(`
+Harika 👍 İlan talebinizi oluşturalım.<br><br>
+
+Size dönüş yapabilmemiz için <b>adınızı ve telefon numaranızı</b> bırakabilirsiniz.<br><br>
+
+📞 Örneğin: <b>Ahmet Yılmaz – 05XX XXX XX XX</b>
+`);
+
+},500);
+
+}
+
+input.addEventListener("keypress",function(e){
+
+if(e.key==="Enter") send();
+
+});
+
+</script>
+
+</body>
+</html>
