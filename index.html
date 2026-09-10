@@ -173,4 +173,589 @@ body{
   background:#111820;
   color:#fff;
   padding:11px;
-  border
+  border-radius:10px;
+  font-weight:bold;
+}
+
+/* SERVICE */
+
+.service{
+  padding:12px;
+  border:1px solid #e0e5e9;
+  border-radius:12px;
+  margin-top:8px;
+}
+
+.service b{
+  display:block;
+}
+
+.service span{
+  color:#68727c;
+  font-size:12px;
+}
+
+/* TYPING */
+
+.typing{
+  display:inline-flex;
+  gap:4px;
+}
+
+.typing span{
+  width:5px;
+  height:5px;
+  background:#7c858d;
+  border-radius:50%;
+}
+
+/* FOOTER */
+
+.footer{
+  text-align:center;
+  font-size:10px;
+  color:#9aa3aa;
+  padding:5px 0 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="header">
+
+<div class="top">
+<div class="logo">AutoAssist</div>
+<div class="ai">AI SERVİS DANIŞMANI</div>
+</div>
+
+<div class="subtitle">
+Oto servis müşterileri için 7/24 dijital asistan
+</div>
+
+<div class="online">
+● Çevrimiçi · Hemen yardımcı olabilirim
+</div>
+
+</header>
+
+
+<main class="chat" id="chat">
+
+<div class="message bot">
+
+Merhaba 👋<br><br>
+
+Ben <b>AutoAssist</b>, oto servisinizin yapay zeka servis danışmanıyım. 🚗
+
+<br><br>
+
+Bakım, arıza, servis işlemleri, yaklaşık fiyat bilgisi ve <b>servis randevusu</b> konusunda size yardımcı olabilirim.
+
+<br><br>
+
+Aracınızla ilgili ne yapmak istiyorsunuz?
+
+</div>
+
+</main>
+
+
+<div class="quick">
+
+<button onclick="quick('Bakım yaptırmak istiyorum')">
+🔧 Bakım
+</button>
+
+<button onclick="quick('Aracımda arıza var')">
+⚠️ Arıza
+</button>
+
+<button onclick="quick('Fiyat öğrenmek istiyorum')">
+💰 Fiyat
+</button>
+
+<button onclick="quick('Servis randevusu almak istiyorum')">
+📅 Randevu
+</button>
+
+</div>
+
+
+<div class="input">
+
+<input
+id="input"
+placeholder="Örn: 2019 BMW 320i bakım fiyatı..."
+>
+
+<button class="send" onclick="send()">
+Gönder
+</button>
+
+</div>
+
+
+<div class="footer">
+AutoAssist Demo · Yapay zeka destekli müşteri karşılama
+</div>
+
+</div>
+
+
+<script>
+
+const chat=document.getElementById("chat");
+const input=document.getElementById("input");
+
+
+function addMessage(text,type="bot"){
+
+const div=document.createElement("div");
+
+div.className="message "+type;
+
+div.innerHTML=text;
+
+chat.appendChild(div);
+
+chat.scrollTop=chat.scrollHeight;
+
+}
+
+
+function typing(){
+
+const div=document.createElement("div");
+
+div.className="message bot";
+
+div.id="typing";
+
+div.innerHTML=`
+<div class="typing">
+<span></span>
+<span></span>
+<span></span>
+</div>
+`;
+
+chat.appendChild(div);
+
+chat.scrollTop=chat.scrollHeight;
+
+}
+
+
+function removeTyping(){
+
+const t=document.getElementById("typing");
+
+if(t)t.remove();
+
+}
+
+
+function quick(text){
+
+input.value=text;
+
+send();
+
+}
+
+
+function send(){
+
+const text=input.value.trim();
+
+if(!text)return;
+
+addMessage(text,"user");
+
+input.value="";
+
+typing();
+
+setTimeout(()=>{
+
+removeTyping();
+
+answer(text.toLowerCase());
+
+},700);
+
+}
+
+
+/* MAIN AI LOGIC */
+
+function answer(q){
+
+/* BAKIM */
+
+if(
+q.includes("bakım") ||
+q.includes("bakim") ||
+q.includes("yağ") ||
+q.includes("yag")
+){
+
+addMessage(`
+Tabii 🔧 Aracınız için bakım sürecini planlayabiliriz.
+
+Size doğru yönlendirme yapabilmem için:
+
+<br><br>
+
+<b>Marka, model ve model yılını</b> yazar mısınız?
+
+<br><br>
+
+Örneğin: <b>2019 BMW 320i</b>
+`);
+
+return;
+
+}
+
+
+/* ARIZA */
+
+if(
+q.includes("arıza") ||
+q.includes("ariza") ||
+q.includes("bozul") ||
+q.includes("ses") ||
+q.includes("titreme")
+){
+
+addMessage(`
+Geçmiş olsun. ⚠️
+
+Arızanın kaynağını kesin olarak teşhis etmek için aracın servis tarafından kontrol edilmesi gerekir.
+
+<br><br>
+
+Ön değerlendirme yapabilmem için:
+
+<br><br>
+
+<b>1. Araç marka/model/yıl<br>
+2. Belirti nedir?<br>
+3. Gösterge panelinde uyarı ışığı var mı?</b>
+
+<br><br>
+
+bilgilerini yazabilirsiniz.
+`);
+
+return;
+
+}
+
+
+/* FİYAT */
+
+if(
+q.includes("fiyat") ||
+q.includes("ücret") ||
+q.includes("ucret") ||
+q.includes("kaç tl") ||
+q.includes("kac tl")
+){
+
+addMessage(`
+Elbette 💰
+
+Fiyat aracın marka/modeline ve yapılacak işleme göre değişebilir.
+
+<br><br>
+
+Örneğin:
+
+<div class="service">
+<b>Periyodik bakım</b>
+<span>Motor yağı + filtre kontrolleri</span>
+</div>
+
+<div class="service">
+<b>Fren bakım</b>
+<span>Balata ve disk kontrolü</span>
+</div>
+
+<div class="service">
+<b>Klima bakım</b>
+<span>Klima sistemi kontrolü</span>
+</div>
+
+<br>
+
+<b>Aracınızın marka, model ve yılını yazarsanız</b> size hangi işlemlerin gerekli olabileceğini açıklayabilirim.
+`);
+
+return;
+
+}
+
+
+/* RANDEVU */
+
+if(
+q.includes("randevu") ||
+q.includes("servise") ||
+q.includes("servis")
+){
+
+addMessage(`
+Harika 📅 Servis randevusu oluşturmanıza yardımcı olabilirim.
+
+<br><br>
+
+Öncelikle aracınızın:
+
+<br>
+
+<b>Marka + model + model yılı</b>
+
+bilgisini yazın.
+
+<br><br>
+
+Sonrasında size uygun gün ve saat bilgisini alacağız.
+`);
+
+return;
+
+}
+
+
+/* LASTİK */
+
+if(
+q.includes("lastik") ||
+q.includes("lastikçi")
+){
+
+addMessage(`
+Lastik konusunda da yardımcı olabilirim. 🛞
+
+<br><br>
+
+Lastik değişimi, balans ve rot ayarı gibi işlemler için servis randevusu oluşturabilirsiniz.
+
+<br><br>
+
+Aracınızın marka ve modelini yazarsanız sizi doğru hizmete yönlendirebilirim.
+`);
+
+return;
+
+}
+
+
+/* MOTOR */
+
+if(
+q.includes("motor") ||
+q.includes("hararet") ||
+q.includes("duman")
+){
+
+addMessage(`
+⚠️ Motorla ilgili ciddi bir belirti varsa aracı kullanmaya devam etmek güvenli olmayabilir.
+
+<br><br>
+
+Özellikle <b>hararet, yoğun duman, yağ basıncı uyarısı veya ciddi motor sesi</b> varsa aracı güvenli bir yerde durdurup profesyonel yardım almanız gerekir.
+
+<br><br>
+
+İsterseniz servis kontrolü için randevu talebi oluşturabiliriz.
+`);
+
+return;
+
+}
+
+
+/* ARAÇ BİLGİSİ */
+
+if(
+q.includes("bmw") ||
+q.includes("mercedes") ||
+q.includes("audi") ||
+q.includes("volkswagen") ||
+q.includes("toyota") ||
+q.includes("ford") ||
+q.includes("renault") ||
+q.includes("fiat") ||
+q.includes("hyundai") ||
+q.includes("opel")
+){
+
+addMessage(`
+Aracınızı aldım. 🚗
+
+Size daha doğru yardımcı olabilmem için <b>yapılmasını istediğiniz işlemi</b> de yazabilir misiniz?
+
+<br><br>
+
+Örneğin:
+
+<br>
+🔧 Periyodik bakım<br>
+🛞 Lastik değişimi<br>
+⚠️ Frenlerden ses geliyor<br>
+📅 Servis randevusu
+`);
+
+return;
+
+}
+
+
+/* DEMO İLAN / HİZMETLER */
+
+if(
+q.includes("ne yapıyorsunuz") ||
+q.includes("hangi hizmet") ||
+q.includes("hizmetler")
+){
+
+showServices();
+
+return;
+
+}
+
+
+/* DEFAULT */
+
+addMessage(`
+Tabii, yardımcı olayım. 😊
+
+<br><br>
+
+Şunlardan birini yazabilirsiniz:
+
+<br><br>
+
+🔧 <b>“2019 Golf bakım yaptırmak istiyorum.”</b>
+
+<br>
+
+⚠️ <b>“Frenlerden ses geliyor.”</b>
+
+<br>
+
+💰 <b>“Bakım fiyatı nedir?”</b>
+
+<br>
+
+📅 <b>“Yarın servis randevusu istiyorum.”</b>
+
+<br>
+
+🛞 <b>“Lastik değişimi yaptırmak istiyorum.”</b>
+`);
+
+}
+
+
+/* SERVICE LIST */
+
+function showServices(){
+
+addMessage(`
+
+<div class="card">
+
+<div class="card-title">
+🔧 Periyodik Bakım
+</div>
+
+<div class="card-info">
+Yağ, filtre ve genel araç kontrolleri
+</div>
+
+<button onclick="quick('Periyodik bakım randevusu istiyorum')">
+Randevu Talep Et
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-title">
+🛞 Lastik & Balans
+</div>
+
+<div class="card-info">
+Lastik değişimi, balans ve rot kontrolü
+</div>
+
+<button onclick="quick('Lastik servisi için randevu istiyorum')">
+Randevu Talep Et
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-title">
+⚙️ Fren Sistemi
+</div>
+
+<div class="card-info">
+Balata, disk ve fren sistemi kontrolü
+</div>
+
+<button onclick="quick('Fren kontrolü için randevu istiyorum')">
+Randevu Talep Et
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-title">
+❄️ Klima Servisi
+</div>
+
+<div class="card-info">
+Klima sistemi kontrolü ve bakım
+</div>
+
+<button onclick="quick('Klima servisi için randevu istiyorum')">
+Randevu Talep Et
+</button>
+
+</div>
+
+`);
+
+}
+
+
+/* ENTER */
+
+input.addEventListener("keypress",function(e){
+
+if(e.key==="Enter"){
+
+send();
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
