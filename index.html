@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AutoAssist | AI Servis Danışmanı</title>
+<title>EduAssist | AI Eğitim Danışmanı</title>
 
 <style>
 *{
@@ -14,13 +14,13 @@
 body{
   margin:0;
   font-family:Inter,Arial,sans-serif;
-  background:#eef1f4;
-  color:#18212b;
+  background:#eef2f7;
+  color:#172033;
 }
 
 .app{
   width:100%;
-  max-width:540px;
+  max-width:560px;
   min-height:100vh;
   margin:auto;
   background:#fff;
@@ -31,8 +31,8 @@ body{
 /* HEADER */
 
 .header{
-  padding:20px;
-  background:#111820;
+  padding:22px;
+  background:linear-gradient(135deg,#172554,#312e81);
   color:#fff;
 }
 
@@ -43,73 +43,74 @@ body{
 }
 
 .logo{
-  font-size:22px;
+  font-size:23px;
   font-weight:800;
 }
 
-.ai{
-  font-size:11px;
-  padding:6px 9px;
+.badge{
+  font-size:10px;
+  font-weight:700;
+  padding:7px 10px;
   border-radius:20px;
-  background:#26313c;
+  background:rgba(255,255,255,.13);
 }
 
 .subtitle{
-  margin-top:5px;
+  margin-top:6px;
   font-size:13px;
-  color:#aeb8c2;
+  color:#dbe4ff;
 }
 
 .online{
-  margin-top:13px;
+  margin-top:15px;
   font-size:12px;
-  color:#76dfa7;
+  color:#a7f3d0;
 }
 
 /* CHAT */
 
 .chat{
   flex:1;
+  min-height:510px;
   padding:18px;
   overflow-y:auto;
-  min-height:500px;
 }
 
 .message{
-  max-width:86%;
+  max-width:88%;
   margin:10px 0;
-  padding:13px 15px;
-  border-radius:17px;
+  padding:14px 16px;
+  border-radius:18px;
   font-size:14px;
-  line-height:1.5;
+  line-height:1.55;
 }
 
 .bot{
-  background:#f0f3f5;
+  background:#f1f5f9;
   border-bottom-left-radius:5px;
 }
 
 .user{
   margin-left:auto;
-  background:#111820;
-  color:white;
+  background:#312e81;
+  color:#fff;
   border-bottom-right-radius:5px;
 }
 
-/* QUICK ACTIONS */
+/* QUICK */
 
 .quick{
   display:flex;
   gap:8px;
-  padding:10px 16px;
+  padding:11px 15px;
   overflow-x:auto;
-  border-top:1px solid #edf0f2;
+  border-top:1px solid #e8edf3;
 }
 
 .quick button{
   white-space:nowrap;
-  border:1px solid #d8dee4;
-  background:white;
+  border:1px solid #d9e0e8;
+  background:#fff;
   border-radius:22px;
   padding:10px 13px;
   font-size:12px;
@@ -121,26 +122,26 @@ body{
 .input{
   display:flex;
   gap:8px;
-  padding:12px 16px 18px;
-  border-top:1px solid #e6e9ec;
+  padding:12px 15px 17px;
+  border-top:1px solid #e8edf3;
 }
 
 .input input{
   flex:1;
-  padding:14px;
-  border:1px solid #d5dce2;
+  border:1px solid #d5dce5;
   border-radius:14px;
-  outline:none;
+  padding:14px;
   font-size:14px;
+  outline:none;
 }
 
 .send{
   border:0;
-  background:#111820;
-  color:#fff;
   border-radius:14px;
   padding:0 17px;
-  font-weight:bold;
+  background:#312e81;
+  color:#fff;
+  font-weight:700;
   cursor:pointer;
 }
 
@@ -148,10 +149,10 @@ body{
 
 .card{
   margin-top:10px;
-  background:#fff;
-  border:1px solid #dde3e8;
+  padding:15px;
+  border:1px solid #dde4ed;
   border-radius:15px;
-  padding:14px;
+  background:#fff;
 }
 
 .card-title{
@@ -161,61 +162,61 @@ body{
 
 .card-info{
   margin-top:6px;
-  color:#68727c;
   font-size:12px;
   line-height:1.6;
+  color:#667085;
 }
 
 .card button{
   width:100%;
-  margin-top:10px;
+  margin-top:11px;
   border:0;
-  background:#111820;
-  color:#fff;
   padding:11px;
   border-radius:10px;
-  font-weight:bold;
+  background:#312e81;
+  color:#fff;
+  font-weight:700;
 }
 
-/* SERVICE */
+/* PROGRAM */
 
-.service{
+.program{
+  margin-top:9px;
   padding:12px;
-  border:1px solid #e0e5e9;
   border-radius:12px;
-  margin-top:8px;
+  border:1px solid #e1e6ed;
 }
 
-.service b{
+.program b{
   display:block;
 }
 
-.service span{
-  color:#68727c;
+.program span{
+  display:block;
+  margin-top:4px;
+  color:#697586;
   font-size:12px;
 }
 
 /* TYPING */
 
 .typing{
-  display:inline-flex;
+  display:flex;
   gap:4px;
 }
 
 .typing span{
   width:5px;
   height:5px;
-  background:#7c858d;
+  background:#7b8490;
   border-radius:50%;
 }
 
-/* FOOTER */
-
 .footer{
+  padding:6px 0 11px;
   text-align:center;
   font-size:10px;
-  color:#9aa3aa;
-  padding:5px 0 10px;
+  color:#98a2b3;
 }
 </style>
 </head>
@@ -227,16 +228,23 @@ body{
 <header class="header">
 
 <div class="top">
-<div class="logo">AutoAssist</div>
-<div class="ai">AI SERVİS DANIŞMANI</div>
+
+<div class="logo">
+EduAssist
+</div>
+
+<div class="badge">
+AI EĞİTİM DANIŞMANI
+</div>
+
 </div>
 
 <div class="subtitle">
-Oto servis müşterileri için 7/24 dijital asistan
+Veliler ve öğrenciler için 7/24 dijital eğitim danışmanı
 </div>
 
 <div class="online">
-● Çevrimiçi · Hemen yardımcı olabilirim
+● Çevrimiçi · Size yardımcı olmaya hazırım
 </div>
 
 </header>
@@ -246,17 +254,19 @@ Oto servis müşterileri için 7/24 dijital asistan
 
 <div class="message bot">
 
-Merhaba 👋<br><br>
-
-Ben <b>AutoAssist</b>, oto servisinizin yapay zeka servis danışmanıyım. 🚗
+Merhaba 👋
 
 <br><br>
 
-Bakım, arıza, servis işlemleri, yaklaşık fiyat bilgisi ve <b>servis randevusu</b> konusunda size yardımcı olabilirim.
+Ben <b>EduAssist</b>, okulunuzun yapay zeka eğitim danışmanıyım. 🎓
 
 <br><br>
 
-Aracınızla ilgili ne yapmak istiyorsunuz?
+Kayıt, eğitim programları, bursluluk, ücretler, sınıflar ve okul hakkında sık sorulan sorularda size yardımcı olabilirim.
+
+<br><br>
+
+Nasıl yardımcı olabilirim?
 
 </div>
 
@@ -265,20 +275,24 @@ Aracınızla ilgili ne yapmak istiyorsunuz?
 
 <div class="quick">
 
-<button onclick="quick('Bakım yaptırmak istiyorum')">
-🔧 Bakım
+<button onclick="quick('Kayıt hakkında bilgi almak istiyorum')">
+📝 Kayıt
 </button>
 
-<button onclick="quick('Aracımda arıza var')">
-⚠️ Arıza
+<button onclick="quick('Bursluluk hakkında bilgi istiyorum')">
+🎁 Bursluluk
 </button>
 
-<button onclick="quick('Fiyat öğrenmek istiyorum')">
-💰 Fiyat
+<button onclick="quick('Ücretler hakkında bilgi istiyorum')">
+💰 Ücretler
 </button>
 
-<button onclick="quick('Servis randevusu almak istiyorum')">
-📅 Randevu
+<button onclick="quick('Eğitim programlarını görmek istiyorum')">
+📚 Programlar
+</button>
+
+<button onclick="quick('Okul hakkında bilgi istiyorum')">
+🏫 Okul
 </button>
 
 </div>
@@ -288,7 +302,7 @@ Aracınızla ilgili ne yapmak istiyorsunuz?
 
 <input
 id="input"
-placeholder="Örn: 2019 BMW 320i bakım fiyatı..."
+placeholder="Örn: 8. sınıf bursluluk sınavı ne zaman?"
 >
 
 <button class="send" onclick="send()">
@@ -299,7 +313,7 @@ Gönder
 
 
 <div class="footer">
-AutoAssist Demo · Yapay zeka destekli müşteri karşılama
+EduAssist Demo · Yapay zeka destekli eğitim danışmanı
 </div>
 
 </div>
@@ -390,31 +404,41 @@ answer(text.toLowerCase());
 }
 
 
-/* MAIN AI LOGIC */
+/* KAYIT */
+
+if(false){}
 
 function answer(q){
 
-/* BAKIM */
-
 if(
-q.includes("bakım") ||
-q.includes("bakim") ||
-q.includes("yağ") ||
-q.includes("yag")
+q.includes("kayıt") ||
+q.includes("kayit") ||
+q.includes("ön kayıt") ||
+q.includes("on kayıt")
 ){
 
 addMessage(`
-Tabii 🔧 Aracınız için bakım sürecini planlayabiliriz.
 
-Size doğru yönlendirme yapabilmem için:
+Elbette. 📝
 
-<br><br>
-
-<b>Marka, model ve model yılını</b> yazar mısınız?
+Kayıt süreci hakkında yardımcı olabilirim.
 
 <br><br>
 
-Örneğin: <b>2019 BMW 320i</b>
+Öğrencinin:
+
+<br>
+
+<b>• Sınıfı<br>
+• Eğitim dönemi<br>
+• İlgilendiğiniz program</b>
+
+bilgilerini paylaşırsanız sizi uygun kayıt sürecine yönlendirebilirim.
+
+<br><br>
+
+İsterseniz okul danışmanımızla görüşme için de randevu talebi oluşturabilirsiniz.
+
 `);
 
 return;
@@ -422,34 +446,32 @@ return;
 }
 
 
-/* ARIZA */
+/* BURS */
 
 if(
-q.includes("arıza") ||
-q.includes("ariza") ||
-q.includes("bozul") ||
-q.includes("ses") ||
-q.includes("titreme")
+q.includes("burs") ||
+q.includes("bursluluk") ||
+q.includes("indirim")
 ){
 
 addMessage(`
-Geçmiş olsun. ⚠️
 
-Arızanın kaynağını kesin olarak teşhis etmek için aracın servis tarafından kontrol edilmesi gerekir.
+Harika. 🎁
 
-<br><br>
-
-Ön değerlendirme yapabilmem için:
+Bursluluk ve eğitim indirimi hakkında bilgi verebilirim.
 
 <br><br>
 
-<b>1. Araç marka/model/yıl<br>
-2. Belirti nedir?<br>
-3. Gösterge panelinde uyarı ışığı var mı?</b>
+Burs oranları öğrencinin sınıfına ve kurumun uyguladığı bursluluk değerlendirmesine göre değişebilir.
 
 <br><br>
 
-bilgilerini yazabilirsiniz.
+<b>Hangi sınıf için bilgi almak istiyorsunuz?</b>
+
+<br><br>
+
+Örneğin: <b>“7. sınıf”</b>
+
 `);
 
 return;
@@ -457,43 +479,100 @@ return;
 }
 
 
-/* FİYAT */
+/* ÜCRET */
 
 if(
-q.includes("fiyat") ||
 q.includes("ücret") ||
 q.includes("ucret") ||
+q.includes("fiyat") ||
 q.includes("kaç tl") ||
 q.includes("kac tl")
 ){
 
 addMessage(`
-Elbette 💰
 
-Fiyat aracın marka/modeline ve yapılacak işleme göre değişebilir.
+Tabii. 💰
 
-<br><br>
-
-Örneğin:
-
-<div class="service">
-<b>Periyodik bakım</b>
-<span>Motor yağı + filtre kontrolleri</span>
-</div>
-
-<div class="service">
-<b>Fren bakım</b>
-<span>Balata ve disk kontrolü</span>
-</div>
-
-<div class="service">
-<b>Klima bakım</b>
-<span>Klima sistemi kontrolü</span>
-</div>
+Eğitim ücretleri;
 
 <br>
 
-<b>Aracınızın marka, model ve yılını yazarsanız</b> size hangi işlemlerin gerekli olabileceğini açıklayabilirim.
+• Sınıf seviyesine
+<br>
+• Eğitim programına
+<br>
+• Burs/indirim durumuna
+<br>
+• Eğitim dönemine
+
+göre değişebilir.
+
+<br><br>
+
+Size doğru bilgi verebilmem için öğrencinin <b>sınıf seviyesini</b> yazabilirsiniz.
+
+`);
+
+return;
+
+}
+
+
+/* PROGRAM */
+
+if(
+q.includes("program") ||
+q.includes("ders") ||
+q.includes("eğitim") ||
+q.includes("egitim")
+){
+
+showPrograms();
+
+return;
+
+}
+
+
+/* OKUL */
+
+if(
+q.includes("okul") ||
+q.includes("kolej") ||
+q.includes("hakkında") ||
+q.includes("hakkinda")
+){
+
+addMessage(`
+
+🏫 <b>Okulumuz hakkında</b>
+
+<br><br>
+
+Öğrencilerin akademik gelişimini destekleyen, veli iletişimini güçlendiren ve öğrencinin ihtiyaçlarına göre yapılandırılmış eğitim programları sunuyoruz.
+
+<br><br>
+
+Demo ortamında okul bilgileri örnek olarak gösterilmektedir.
+
+<br><br>
+
+Gerçek kurulumda okulunuzun;
+
+<br>
+
+<b>
+• Eğitim programları<br>
+• Kampüs bilgileri<br>
+• Öğretmen kadrosu<br>
+• Ücretleri<br>
+• Servis bilgileri<br>
+• Yemekhane<br>
+• Bursluluk şartları
+</b>
+
+gibi tüm bilgileri sisteme özel olarak tanımlanabilir.
+
 `);
 
 return;
@@ -505,26 +584,31 @@ return;
 
 if(
 q.includes("randevu") ||
-q.includes("servise") ||
-q.includes("servis")
+q.includes("görüşme") ||
+q.includes("gorusme") ||
+q.includes("danışman")
 ){
 
 addMessage(`
-Harika 📅 Servis randevusu oluşturmanıza yardımcı olabilirim.
+
+Memnuniyetle. 📅
+
+Bir eğitim danışmanıyla görüşme talebinizi oluşturabiliriz.
 
 <br><br>
 
-Öncelikle aracınızın:
+Lütfen:
 
 <br>
 
-<b>Marka + model + model yılı</b>
+<b>Veli adı + telefon numarası + öğrencinin sınıfı</b>
 
-bilgisini yazın.
+bilgilerini bırakın.
 
 <br><br>
 
-Sonrasında size uygun gün ve saat bilgisini alacağız.
+Danışman ekibimiz sizinle iletişime geçebilir.
+
 `);
 
 return;
@@ -532,84 +616,46 @@ return;
 }
 
 
-/* LASTİK */
+/* SINIF */
 
 if(
-q.includes("lastik") ||
-q.includes("lastikçi")
+q.includes("1. sınıf") ||
+q.includes("2. sınıf") ||
+q.includes("3. sınıf") ||
+q.includes("4. sınıf") ||
+q.includes("5. sınıf") ||
+q.includes("6. sınıf") ||
+q.includes("7. sınıf") ||
+q.includes("8. sınıf") ||
+q.includes("9. sınıf") ||
+q.includes("10. sınıf") ||
+q.includes("11. sınıf") ||
+q.includes("12. sınıf")
 ){
 
 addMessage(`
-Lastik konusunda da yardımcı olabilirim. 🛞
+
+Anladım. 🎓
+
+Öğrencinin sınıf seviyesini aldım.
 
 <br><br>
 
-Lastik değişimi, balans ve rot ayarı gibi işlemler için servis randevusu oluşturabilirsiniz.
-
-<br><br>
-
-Aracınızın marka ve modelini yazarsanız sizi doğru hizmete yönlendirebilirim.
-`);
-
-return;
-
-}
-
-
-/* MOTOR */
-
-if(
-q.includes("motor") ||
-q.includes("hararet") ||
-q.includes("duman")
-){
-
-addMessage(`
-⚠️ Motorla ilgili ciddi bir belirti varsa aracı kullanmaya devam etmek güvenli olmayabilir.
-
-<br><br>
-
-Özellikle <b>hararet, yoğun duman, yağ basıncı uyarısı veya ciddi motor sesi</b> varsa aracı güvenli bir yerde durdurup profesyonel yardım almanız gerekir.
-
-<br><br>
-
-İsterseniz servis kontrolü için randevu talebi oluşturabiliriz.
-`);
-
-return;
-
-}
-
-
-/* ARAÇ BİLGİSİ */
-
-if(
-q.includes("bmw") ||
-q.includes("mercedes") ||
-q.includes("audi") ||
-q.includes("volkswagen") ||
-q.includes("toyota") ||
-q.includes("ford") ||
-q.includes("renault") ||
-q.includes("fiat") ||
-q.includes("hyundai") ||
-q.includes("opel")
-){
-
-addMessage(`
-Aracınızı aldım. 🚗
-
-Size daha doğru yardımcı olabilmem için <b>yapılmasını istediğiniz işlemi</b> de yazabilir misiniz?
-
-<br><br>
-
-Örneğin:
+Bu seviyeye uygun;
 
 <br>
-🔧 Periyodik bakım<br>
-🛞 Lastik değişimi<br>
-⚠️ Frenlerden ses geliyor<br>
-📅 Servis randevusu
+
+📚 Eğitim programı<br>
+🎁 Bursluluk seçenekleri<br>
+💰 Ücret bilgisi<br>
+📅 Görüşme/randevu
+
+konularında yardımcı olabilirim.
+
+<br><br>
+
+Hangisi hakkında bilgi almak istersiniz?
+
 `);
 
 return;
@@ -617,15 +663,70 @@ return;
 }
 
 
-/* DEMO İLAN / HİZMETLER */
+/* SERVİS */
 
 if(
-q.includes("ne yapıyorsunuz") ||
-q.includes("hangi hizmet") ||
-q.includes("hizmetler")
+q.includes("servis") ||
+q.includes("yemek") ||
+q.includes("yemekhane") ||
+q.includes("ulaşım")
 ){
 
-showServices();
+addMessage(`
+
+Okulumuzun servis ve yemek hizmetleri hakkında bilgi sağlayabiliriz. 🚌🍽️
+
+<br><br>
+
+Gerçek kurulumda;
+
+<br>
+
+<b>servis güzergâhları, servis ücretleri, yemekhane menüsü ve yemek ücretleri</b>
+
+gibi bilgiler doğrudan sisteme tanımlanabilir.
+
+<br><br>
+
+Hangi konuda bilgi almak istediğinizi yazabilirsiniz.
+
+`);
+
+return;
+
+}
+
+
+/* DEMO */
+
+if(
+q.includes("demo") ||
+q.includes("nasıl çalış") ||
+q.includes("nasil calis")
+){
+
+addMessage(`
+
+EduAssist, okulun dijital danışmanı olarak çalışır. 🤖
+
+<br><br>
+
+Bir veli soru sorduğunda:
+
+<br>
+
+<b>
+1️⃣ Soruyu analiz eder<br>
+2️⃣ Okulun bilgi tabanından uygun bilgiyi bulur<br>
+3️⃣ Veliye doğal bir cevap verir<br>
+4️⃣ Gerekirse kayıt/randevu talebi oluşturur
+</b>
+
+<br><br>
+
+Gerçek kurulumda okulunuzun bilgileriyle tamamen özelleştirilebilir.
+
+`);
 
 return;
 
@@ -635,54 +736,56 @@ return;
 /* DEFAULT */
 
 addMessage(`
+
 Tabii, yardımcı olayım. 😊
 
 <br><br>
 
-Şunlardan birini yazabilirsiniz:
+Şunlardan birini sorabilirsiniz:
 
 <br><br>
 
-🔧 <b>“2019 Golf bakım yaptırmak istiyorum.”</b>
+📝 <b>“Kayıt nasıl yapılır?”</b>
 
 <br>
 
-⚠️ <b>“Frenlerden ses geliyor.”</b>
+🎁 <b>“Bursluluk sınavı var mı?”</b>
 
 <br>
 
-💰 <b>“Bakım fiyatı nedir?”</b>
+💰 <b>“8. sınıf eğitim ücreti nedir?”</b>
 
 <br>
 
-📅 <b>“Yarın servis randevusu istiyorum.”</b>
+📚 <b>“Eğitim programlarınız neler?”</b>
 
 <br>
 
-🛞 <b>“Lastik değişimi yaptırmak istiyorum.”</b>
+📅 <b>“Danışmanla görüşmek istiyorum.”</b>
+
 `);
 
 }
 
 
-/* SERVICE LIST */
+/* PROGRAMLAR */
 
-function showServices(){
+function showPrograms(){
 
 addMessage(`
 
 <div class="card">
 
 <div class="card-title">
-🔧 Periyodik Bakım
+🎓 LGS Hazırlık
 </div>
 
 <div class="card-info">
-Yağ, filtre ve genel araç kontrolleri
+8. sınıf öğrencileri için sınav odaklı akademik destek ve deneme programı.
 </div>
 
-<button onclick="quick('Periyodik bakım randevusu istiyorum')">
-Randevu Talep Et
+<button onclick="quick('LGS programı hakkında bilgi istiyorum')">
+Bilgi Al
 </button>
 
 </div>
@@ -691,15 +794,15 @@ Randevu Talep Et
 <div class="card">
 
 <div class="card-title">
-🛞 Lastik & Balans
+📚 Ortaokul Programı
 </div>
 
 <div class="card-info">
-Lastik değişimi, balans ve rot kontrolü
+5, 6 ve 7. sınıflar için akademik gelişim ve düzenli takip.
 </div>
 
-<button onclick="quick('Lastik servisi için randevu istiyorum')">
-Randevu Talep Et
+<button onclick="quick('Ortaokul programı hakkında bilgi istiyorum')">
+Bilgi Al
 </button>
 
 </div>
@@ -708,15 +811,15 @@ Randevu Talep Et
 <div class="card">
 
 <div class="card-title">
-⚙️ Fren Sistemi
+🎯 YKS Hazırlık
 </div>
 
 <div class="card-info">
-Balata, disk ve fren sistemi kontrolü
+TYT ve AYT sınavlarına yönelik hazırlık ve deneme sistemi.
 </div>
 
-<button onclick="quick('Fren kontrolü için randevu istiyorum')">
-Randevu Talep Et
+<button onclick="quick('YKS programı hakkında bilgi istiyorum')">
+Bilgi Al
 </button>
 
 </div>
@@ -725,15 +828,15 @@ Randevu Talep Et
 <div class="card">
 
 <div class="card-title">
-❄️ Klima Servisi
+🌟 Birebir Eğitim
 </div>
 
 <div class="card-info">
-Klima sistemi kontrolü ve bakım
+Öğrencinin ihtiyaçlarına göre kişiselleştirilmiş ders desteği.
 </div>
 
-<button onclick="quick('Klima servisi için randevu istiyorum')">
-Randevu Talep Et
+<button onclick="quick('Özel ders hakkında bilgi istiyorum')">
+Bilgi Al
 </button>
 
 </div>
