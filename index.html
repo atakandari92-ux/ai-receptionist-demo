@@ -1,32 +1,176 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI Receptionist Demo</title>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AutoAssist | AI Servis Danışmanı</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f7f6;color:#172018}.wrap{max-width:760px;margin:auto;padding:20px}
-.brand{font-weight:800;font-size:20px}.sub{color:#69736c;font-size:14px;margin:5px 0 18px}
-.card{background:#fff;border:1px solid #e1e6e2;border-radius:22px;overflow:hidden;box-shadow:0 12px 35px rgba(20,30,20,.08)}
-.head{padding:20px;border-bottom:1px solid #e8ece9}.head strong{font-size:18px}.status{font-size:12px;margin-top:5px}
-.chat{height:500px;padding:18px;overflow:auto;background:#fbfcfb}.msg{max-width:82%;padding:12px 14px;border-radius:16px;margin:10px 0;line-height:1.45;font-size:14px}
-.bot{background:#eef4ef;border-bottom-left-radius:5px}.user{background:#172018;color:#fff;margin-left:auto;border-bottom-right-radius:5px}
-.quick{display:flex;gap:8px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid #e8ece9}.quick button{border:1px solid #cfd8d1;background:#fff;border-radius:999px;padding:9px 12px;font-weight:600}
-.input{display:flex;gap:8px;padding:14px;border-top:1px solid #e8ece9}.input input{flex:1;padding:13px;border:1px solid #cfd8d1;border-radius:13px;font-size:14px}.input button{border:0;background:#172018;color:#fff;border-radius:13px;padding:0 18px;font-weight:800}
-.note{font-size:12px;color:#7a827c;text-align:center;padding:14px}
-</style></head>
-<body><div class="wrap"><div class="brand">AI Receptionist Demo</div><div class="sub">Dental clinic • patient enquiry assistant</div>
-<div class="card"><div class="head"><strong>Clinic Assistant</strong><div class="status">● Online — replies instantly</div></div>
-<div id="chat" class="chat"><div class="msg bot">Hi! 👋 I'm the clinic's virtual receptionist. I can answer common questions and collect appointment requests. How can I help?</div></div>
-<div class="quick"><button onclick="quick('I want to book an appointment')">Book appointment</button><button onclick="quick('What are your opening hours?')">Opening hours</button><button onclick="quick('How much is a consultation?')">Pricing</button></div>
-<div class="input"><input id="inp" placeholder="Type your question..." onkeydown="if(event.key==='Enter')send()"><button onclick="send()">Send</button></div>
-<div class="note">Demo prototype — clinic-specific answers and booking integration would be configured for the client.</div></div></div>
-<script>
-const chat=document.getElementById('chat'),inp=document.getElementById('inp');
-function add(t,w){let d=document.createElement('div');d.className='msg '+w;d.textContent=t;chat.appendChild(d);chat.scrollTop=chat.scrollHeight}
-function reply(q){q=q.toLowerCase();
-if(q.includes('book')||q.includes('appointment'))return"Absolutely. I can collect your preferred day, preferred time and contact details, then send the request to the clinic team. What day would you prefer?";
-if(q.includes('hour')||q.includes('open')||q.includes('when'))return"The clinic's opening hours can be configured here. For this demo, I'll collect your question and the clinic team can confirm exact availability.";
-if(q.includes('price')||q.includes('cost')||q.includes('how much'))return"Pricing depends on the treatment. I can provide the clinic's approved price information and collect your details if you'd like a consultation.";
-if(q.includes('emergency')||q.includes('pain'))return"If you have a dental emergency or severe pain, please contact the clinic directly or seek urgent medical care.";
-return"Thanks! I can help with common clinic questions and appointment requests. If I don't have an approved answer, I'll collect your details and pass the enquiry to the clinic team."}
-function send(){let v=inp.value.trim();if(!v)return;add(v,'user');inp.value='';setTimeout(()=>add(reply(v),'bot'),450)}
-function quick(v){inp.value=v;send()}
-</script></body></html>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  background:#eef1f4;
+  color:#18212b;
+}
+
+.app{
+  width:100%;
+  max-width:540px;
+  min-height:100vh;
+  margin:auto;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+}
+
+/* HEADER */
+
+.header{
+  padding:20px;
+  background:#111820;
+  color:#fff;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:800;
+}
+
+.ai{
+  font-size:11px;
+  padding:6px 9px;
+  border-radius:20px;
+  background:#26313c;
+}
+
+.subtitle{
+  margin-top:5px;
+  font-size:13px;
+  color:#aeb8c2;
+}
+
+.online{
+  margin-top:13px;
+  font-size:12px;
+  color:#76dfa7;
+}
+
+/* CHAT */
+
+.chat{
+  flex:1;
+  padding:18px;
+  overflow-y:auto;
+  min-height:500px;
+}
+
+.message{
+  max-width:86%;
+  margin:10px 0;
+  padding:13px 15px;
+  border-radius:17px;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.bot{
+  background:#f0f3f5;
+  border-bottom-left-radius:5px;
+}
+
+.user{
+  margin-left:auto;
+  background:#111820;
+  color:white;
+  border-bottom-right-radius:5px;
+}
+
+/* QUICK ACTIONS */
+
+.quick{
+  display:flex;
+  gap:8px;
+  padding:10px 16px;
+  overflow-x:auto;
+  border-top:1px solid #edf0f2;
+}
+
+.quick button{
+  white-space:nowrap;
+  border:1px solid #d8dee4;
+  background:white;
+  border-radius:22px;
+  padding:10px 13px;
+  font-size:12px;
+  cursor:pointer;
+}
+
+/* INPUT */
+
+.input{
+  display:flex;
+  gap:8px;
+  padding:12px 16px 18px;
+  border-top:1px solid #e6e9ec;
+}
+
+.input input{
+  flex:1;
+  padding:14px;
+  border:1px solid #d5dce2;
+  border-radius:14px;
+  outline:none;
+  font-size:14px;
+}
+
+.send{
+  border:0;
+  background:#111820;
+  color:#fff;
+  border-radius:14px;
+  padding:0 17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* CARDS */
+
+.card{
+  margin-top:10px;
+  background:#fff;
+  border:1px solid #dde3e8;
+  border-radius:15px;
+  padding:14px;
+}
+
+.card-title{
+  font-weight:800;
+  font-size:15px;
+}
+
+.card-info{
+  margin-top:6px;
+  color:#68727c;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.card button{
+  width:100%;
+  margin-top:10px;
+  border:0;
+  background:#111820;
+  color:#fff;
+  padding:11px;
+  border
