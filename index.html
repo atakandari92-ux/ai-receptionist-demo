@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>LUXE AI — Premium Med Spa Receptionist</title>
+<title>AURA AI — Intelligent Med Spa Receptionist</title>
 
 <meta name="description"
-content="LUXE AI — 24/7 premium digital receptionist for modern aesthetic clinics.">
+content="AURA AI — a premium AI receptionist for modern aesthetic clinics.">
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -18,18 +17,18 @@ content="LUXE AI — 24/7 premium digital receptionist for modern aesthetic clin
 }
 
 :root{
-  --bg:#070708;
-  --bg2:#0d0d0f;
-  --card:#111114;
-  --card2:#17171b;
-  --gold:#d8b477;
-  --gold2:#f1d49a;
-  --cream:#f7f1e8;
-  --white:#ffffff;
-  --muted:#929096;
-  --muted2:#6e6d73;
+  --bg:#07070a;
+  --panel:#0f1015;
+  --panel2:#15161d;
+  --text:#f8f7f4;
+  --muted:#999ba5;
+  --gold:#e4bd78;
+  --gold2:#f5d99e;
+  --violet:#8f7cff;
+  --cyan:#67e8f9;
+  --green:#66e3a0;
   --line:rgba(255,255,255,.09);
-  --green:#65d89b;
+  --white:#fff;
 }
 
 html{
@@ -37,17 +36,17 @@ html{
 }
 
 body{
+  min-height:100vh;
   background:
-    radial-gradient(circle at 85% 10%,rgba(216,180,119,.10),transparent 28%),
-    radial-gradient(circle at 10% 40%,rgba(216,180,119,.06),transparent 25%),
+    radial-gradient(circle at 80% 12%,rgba(143,124,255,.15),transparent 28%),
+    radial-gradient(circle at 15% 35%,rgba(228,189,120,.10),transparent 25%),
     var(--bg);
-  color:var(--white);
-  font-family:Inter,Arial,Helvetica,sans-serif;
+  color:var(--text);
+  font-family:Inter,Arial,sans-serif;
   overflow-x:hidden;
 }
 
-button,
-input{
+button,input{
   font:inherit;
 }
 
@@ -56,233 +55,238 @@ button{
 }
 
 a{
-  text-decoration:none;
   color:inherit;
+  text-decoration:none;
 }
 
-
-/* =========================
-   NAVBAR
-========================= */
+/* NAV */
 
 .nav{
   position:fixed;
+  z-index:100;
   top:0;
   left:0;
   right:0;
-  height:78px;
-  z-index:100;
+  height:76px;
+  padding:0 5%;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 5%;
-  background:rgba(7,7,8,.72);
-  backdrop-filter:blur(20px);
+  background:rgba(7,7,10,.70);
+  backdrop-filter:blur(24px);
   border-bottom:1px solid var(--line);
 }
 
-.brand{
+.logo{
   font-size:20px;
-  letter-spacing:5px;
   font-weight:900;
+  letter-spacing:5px;
 }
 
-.brand span{
+.logo span{
   color:var(--gold);
 }
 
 .navlinks{
   display:flex;
   gap:30px;
-  color:#aaa;
-  font-size:13px;
-}
-
-.navlinks a{
-  transition:.25s;
+  color:#999;
+  font-size:12px;
 }
 
 .navlinks a:hover{
-  color:white;
+  color:#fff;
 }
 
-.navbtn{
-  border:1px solid rgba(216,180,119,.35);
-  background:rgba(216,180,119,.08);
+.nav-cta{
+  border:1px solid rgba(228,189,120,.35);
+  background:rgba(228,189,120,.08);
   color:var(--gold2);
   border-radius:999px;
-  padding:12px 19px;
-  font-size:12px;
+  padding:11px 18px;
+  font-size:11px;
   font-weight:800;
 }
 
-
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
   min-height:100vh;
-  max-width:1300px;
+  max-width:1320px;
   margin:auto;
-  padding:150px 28px 80px;
+  padding:135px 28px 80px;
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:70px;
+  grid-template-columns: .92fr 1.08fr;
   align-items:center;
+  gap:70px;
 }
 
 .eyebrow{
   display:inline-flex;
   align-items:center;
   gap:9px;
-  border:1px solid rgba(216,180,119,.3);
-  color:var(--gold2);
   padding:9px 13px;
+  border:1px solid rgba(228,189,120,.3);
   border-radius:999px;
-  font-size:10px;
-  font-weight:800;
+  color:var(--gold2);
+  font-size:9px;
   letter-spacing:2px;
+  font-weight:900;
+  background:rgba(228,189,120,.05);
   margin-bottom:25px;
-  background:rgba(216,180,119,.05);
 }
 
-.dot{
+.live-dot{
   width:7px;
   height:7px;
-  background:var(--green);
   border-radius:50%;
-  box-shadow:0 0 12px rgba(101,216,155,.7);
+  background:var(--green);
+  box-shadow:0 0 14px rgba(102,227,160,.8);
 }
 
 .hero h1{
-  font-size:clamp(48px,6vw,82px);
-  line-height:.94;
-  letter-spacing:-4px;
+  font-size:clamp(50px,6vw,83px);
+  line-height:.92;
+  letter-spacing:-5px;
   margin-bottom:27px;
 }
 
-.hero h1 span{
+.hero h1 em{
   display:block;
   color:var(--gold);
   font-family:Georgia,serif;
-  font-style:italic;
   font-weight:400;
-  letter-spacing:-3px;
+  letter-spacing:-4px;
 }
 
 .hero-copy{
-  max-width:570px;
   color:var(--muted);
-  font-size:16px;
+  max-width:550px;
   line-height:1.8;
-  margin-bottom:32px;
+  font-size:15px;
+  margin-bottom:31px;
 }
 
-.hero-actions{
+.actions{
   display:flex;
-  gap:12px;
   flex-wrap:wrap;
+  gap:12px;
 }
 
 .primary{
   border:0;
-  background:var(--cream);
   color:#111;
+  background:linear-gradient(135deg,#fff8eb,#dfc083);
   border-radius:999px;
   padding:16px 23px;
   font-weight:900;
-  font-size:13px;
+  font-size:12px;
+  box-shadow:0 15px 40px rgba(228,189,120,.10);
   transition:.25s;
 }
 
 .primary:hover{
-  transform:translateY(-2px);
-  box-shadow:0 15px 40px rgba(255,255,255,.08);
+  transform:translateY(-3px);
+  box-shadow:0 20px 55px rgba(228,189,120,.20);
 }
 
 .secondary{
   border:1px solid var(--line);
-  background:#101012;
-  color:white;
+  background:#111217;
+  color:#eee;
   border-radius:999px;
   padding:16px 23px;
   font-weight:700;
-  font-size:13px;
+  font-size:12px;
 }
 
-.stats{
+.metrics{
   display:flex;
-  gap:35px;
+  gap:32px;
   margin-top:38px;
 }
 
-.stat strong{
+.metric strong{
+  font-size:22px;
   display:block;
-  font-size:23px;
 }
 
-.stat span{
+.metric span{
   display:block;
-  margin-top:4px;
-  color:var(--muted2);
-  font-size:11px;
+  margin-top:5px;
+  color:#686a74;
+  font-size:10px;
 }
 
+/* CHAT */
 
-/* =========================
-   AI WINDOW
-========================= */
-
-.ai-shell{
+.chat-wrap{
   position:relative;
 }
 
-.glow{
+.chat-glow{
   position:absolute;
-  width:420px;
-  height:420px;
+  width:440px;
+  height:440px;
+  right:-80px;
+  top:-70px;
   border-radius:50%;
-  background:rgba(216,180,119,.13);
-  filter:blur(100px);
-  right:-100px;
-  top:-80px;
-  pointer-events:none;
+  background:
+    radial-gradient(circle,
+      rgba(143,124,255,.22),
+      rgba(228,189,120,.08) 35%,
+      transparent 70%);
+  filter:blur(35px);
 }
 
-.ai-window{
+.chat{
   position:relative;
-  background:#f5eee5;
-  color:#171717;
+  border:1px solid rgba(255,255,255,.12);
   border-radius:30px;
   overflow:hidden;
+  background:#f8f5ef;
+  color:#151515;
   box-shadow:
-    0 35px 100px rgba(0,0,0,.55),
-    0 0 0 1px rgba(255,255,255,.08);
+    0 40px 110px rgba(0,0,0,.65),
+    0 0 70px rgba(143,124,255,.08);
 }
 
-.ai-top{
-  height:78px;
-  background:#141416;
-  color:white;
+/* CHAT HEADER */
+
+.chat-header{
+  height:86px;
+  padding:15px 19px;
   display:flex;
   align-items:center;
   gap:13px;
-  padding:15px 19px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 90% 0%,rgba(143,124,255,.25),transparent 35%),
+    linear-gradient(135deg,#15151c,#0d0e12);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.ai-avatar{
-  width:45px;
-  height:45px;
+.ai-orb{
+  position:relative;
+  width:48px;
+  height:48px;
   flex:none;
-  border-radius:50%;
   display:grid;
   place-items:center;
-  color:#151515;
+  border-radius:50%;
   background:
-    radial-gradient(circle at 35% 30%,#f8e1b0,#bd9252);
+    radial-gradient(circle at 35% 25%,#fff0c9,#d9a95d 45%,#805f2e);
+  color:#17120a;
   font-size:21px;
-  font-weight:bold;
+  box-shadow:0 0 30px rgba(228,189,120,.18);
+}
+
+.ai-orb::after{
+  content:"";
+  position:absolute;
+  inset:-4px;
+  border:1px solid rgba(228,189,120,.28);
+  border-radius:50%;
 }
 
 .ai-name{
@@ -290,27 +294,31 @@ a{
   font-weight:900;
 }
 
-.ai-status{
-  margin-top:4px;
-  color:#85858a;
+.ai-sub{
+  margin-top:5px;
+  color:#858690;
   font-size:9px;
-  letter-spacing:1.5px;
+  letter-spacing:1.4px;
 }
 
-.status-dot{
+.online{
   display:inline-block;
   width:6px;
   height:6px;
-  background:var(--green);
-  border-radius:50%;
   margin-right:5px;
+  border-radius:50%;
+  background:var(--green);
 }
 
+/* MESSAGES */
+
 .messages{
-  height:390px;
-  overflow-y:auto;
+  height:410px;
   padding:22px 20px 12px;
-  scroll-behavior:smooth;
+  overflow-y:auto;
+  background:
+    radial-gradient(circle at 85% 10%,rgba(228,189,120,.07),transparent 30%),
+    #f8f5ef;
 }
 
 .messages::-webkit-scrollbar{
@@ -318,24 +326,24 @@ a{
 }
 
 .messages::-webkit-scrollbar-thumb{
-  background:#d1c7bb;
+  background:#d3c9bd;
   border-radius:10px;
 }
 
-.msg{
-  max-width:84%;
-  padding:13px 15px;
-  border-radius:17px;
+.message{
+  max-width:83%;
+  padding:14px 16px;
+  border-radius:18px;
   margin-bottom:12px;
   font-size:13px;
   line-height:1.55;
-  animation:appear .25s ease;
+  animation:messageIn .25s ease;
 }
 
-@keyframes appear{
+@keyframes messageIn{
   from{
     opacity:0;
-    transform:translateY(6px);
+    transform:translateY(7px);
   }
   to{
     opacity:1;
@@ -343,30 +351,95 @@ a{
   }
 }
 
-.msg.bot{
-  background:white;
+.message.ai{
   margin-right:auto;
-  box-shadow:0 3px 12px rgba(0,0,0,.04);
+  background:#fff;
+  box-shadow:0 5px 18px rgba(0,0,0,.045);
 }
 
-.msg.user{
-  background:#171719;
-  color:white;
+.message.user{
   margin-left:auto;
+  background:#17181d;
+  color:#fff;
 }
+
+/* QUICK ACTIONS */
+
+.quick{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  padding:5px 18px 13px;
+  background:#f8f5ef;
+}
+
+.quick button{
+  padding:9px 12px;
+  border-radius:999px;
+  border:1px solid #ded7ce;
+  background:#fff;
+  color:#262626;
+  font-size:10px;
+  font-weight:700;
+  transition:.2s;
+}
+
+.quick button:hover{
+  border-color:#c5a56d;
+  transform:translateY(-1px);
+}
+
+/* INPUT */
+
+.input{
+  display:flex;
+  gap:9px;
+  padding:12px;
+  background:#fff;
+  border-top:1px solid #ddd7cf;
+}
+
+.input input{
+  min-width:0;
+  flex:1;
+  border:0;
+  outline:0;
+  background:#f8f8f8;
+  border-radius:15px;
+  padding:15px;
+  color:#171717;
+  font-size:12px;
+}
+
+.send{
+  width:53px;
+  height:53px;
+  border:0;
+  border-radius:16px;
+  background:#17181d;
+  color:white;
+  font-size:19px;
+  transition:.2s;
+}
+
+.send:hover{
+  transform:scale(1.03);
+}
+
+/* TYPING */
 
 .typing{
   display:flex;
-  gap:4px;
   align-items:center;
-  padding:15px;
+  gap:4px;
   width:60px;
+  padding:16px;
 }
 
 .typing i{
   width:5px;
   height:5px;
-  background:#999;
+  background:#aaa;
   border-radius:50%;
   animation:bounce 1s infinite;
 }
@@ -380,79 +453,19 @@ a{
 }
 
 @keyframes bounce{
-  0%,60%,100%{
-    transform:translateY(0);
-  }
-  30%{
-    transform:translateY(-4px);
-  }
+  0%,60%,100%{transform:translateY(0)}
+  30%{transform:translateY(-4px)}
 }
 
-.quick{
-  padding:4px 18px 13px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-}
-
-.quick button{
-  border:1px solid #ddd5cc;
-  background:#fff;
-  color:#222;
-  border-radius:999px;
-  padding:9px 12px;
-  font-size:11px;
-  transition:.2s;
-}
-
-.quick button:hover{
-  border-color:#b99767;
-  transform:translateY(-1px);
-}
-
-.input-row{
-  background:white;
-  border-top:1px solid #ddd;
-  padding:12px;
-  display:flex;
-  gap:9px;
-}
-
-.input-row input{
-  min-width:0;
-  flex:1;
-  border:0;
-  outline:0;
-  background:#fafafa;
-  border-radius:15px;
-  padding:15px;
-  color:#222;
-  font-size:13px;
-}
-
-.send{
-  width:52px;
-  height:52px;
-  flex:none;
-  border:0;
-  border-radius:15px;
-  background:#171719;
-  color:white;
-  font-size:19px;
-}
-
-.demo-note{
-  background:#faf6f0;
-  color:#888;
-  font-size:9px;
-  text-align:center;
+.note{
   padding:0 15px 12px;
+  background:#fff;
+  color:#999;
+  font-size:8px;
+  text-align:center;
 }
 
-
-/* =========================
-   SECTION
-========================= */
+/* SECTIONS */
 
 .section{
   max-width:1200px;
@@ -460,85 +473,79 @@ a{
   padding:110px 28px;
 }
 
+.kicker{
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:2px;
+  font-weight:900;
+  margin-bottom:13px;
+}
+
 .section-head{
   max-width:650px;
   margin-bottom:50px;
 }
 
-.kicker{
-  color:var(--gold);
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:2px;
-  margin-bottom:13px;
-}
-
 .section h2{
-  font-size:clamp(36px,5vw,58px);
-  letter-spacing:-2px;
-  line-height:1;
-  margin-bottom:17px;
+  font-size:clamp(38px,5vw,60px);
+  line-height:.98;
+  letter-spacing:-3px;
+  margin-bottom:18px;
 }
 
 .section-head p{
   color:var(--muted);
-  line-height:1.7;
+  line-height:1.75;
+  font-size:14px;
 }
 
+/* FEATURE CARDS */
 
-/* =========================
-   CARDS
-========================= */
-
-.grid{
+.features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:17px;
 }
 
-.card{
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.035),transparent),
-    var(--card);
+.feature{
+  min-height:230px;
+  padding:30px;
   border:1px solid var(--line);
   border-radius:23px;
-  padding:30px;
-  min-height:220px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.035),transparent),
+    var(--panel);
   transition:.3s;
 }
 
-.card:hover{
-  transform:translateY(-5px);
-  border-color:rgba(216,180,119,.3);
+.feature:hover{
+  transform:translateY(-6px);
+  border-color:rgba(228,189,120,.3);
 }
 
-.icon{
+.feature-icon{
   width:45px;
   height:45px;
-  border-radius:14px;
   display:grid;
   place-items:center;
-  background:rgba(216,180,119,.1);
-  color:var(--gold);
+  border-radius:14px;
+  color:var(--gold2);
+  background:rgba(228,189,120,.09);
   margin-bottom:25px;
-  font-size:19px;
 }
 
-.card h3{
-  font-size:19px;
-  margin-bottom:12px;
+.feature h3{
+  font-size:18px;
+  margin-bottom:11px;
 }
 
-.card p{
+.feature p{
   color:var(--muted);
   font-size:13px;
   line-height:1.7;
 }
 
-
-/* =========================
-   TREATMENTS
-========================= */
+/* TREATMENTS */
 
 .treatments{
   display:grid;
@@ -547,23 +554,28 @@ a{
 }
 
 .treatment{
-  min-height:260px;
+  min-height:270px;
   padding:24px;
-  border-radius:22px;
-  border:1px solid var(--line);
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
+  border:1px solid var(--line);
+  border-radius:23px;
   background:
-    linear-gradient(to top,rgba(0,0,0,.8),rgba(0,0,0,.05)),
-    radial-gradient(circle at 50% 30%,rgba(216,180,119,.18),transparent 40%),
-    #151518;
+    linear-gradient(to top,rgba(0,0,0,.88),rgba(0,0,0,.08)),
+    radial-gradient(circle at 50% 25%,rgba(143,124,255,.17),transparent 45%),
+    #14151a;
+  transition:.3s;
+}
+
+.treatment:hover{
+  transform:translateY(-5px);
 }
 
 .treatment small{
   color:var(--gold);
-  letter-spacing:1.5px;
   font-size:9px;
+  letter-spacing:2px;
   margin-bottom:8px;
 }
 
@@ -575,20 +587,19 @@ a{
 .treatment p{
   color:#999;
   font-size:11px;
-  line-height:1.5;
+  line-height:1.55;
 }
 
-
-/* =========================
-   TESTIMONIAL
-========================= */
+/* QUOTE */
 
 .quote{
-  background:linear-gradient(135deg,#161619,#0e0e10);
+  padding:55px 35px;
+  border-radius:30px;
   border:1px solid var(--line);
-  border-radius:28px;
-  padding:50px;
   text-align:center;
+  background:
+    radial-gradient(circle at 50% 0,rgba(143,124,255,.13),transparent 50%),
+    var(--panel);
 }
 
 .stars{
@@ -598,43 +609,42 @@ a{
 }
 
 .quote p{
-  max-width:760px;
+  max-width:780px;
   margin:auto;
   font-family:Georgia,serif;
   font-size:25px;
   line-height:1.5;
-  color:#eee;
 }
 
-.quote small{
+.quote span{
   display:block;
   color:#777;
-  margin-top:22px;
+  font-size:10px;
+  margin-top:20px;
+  letter-spacing:1.5px;
 }
 
-
-/* =========================
-   CTA
-========================= */
+/* CTA */
 
 .final{
   max-width:1200px;
-  margin:0 auto;
-  padding:30px 28px 110px;
+  margin:auto;
+  padding:20px 28px 110px;
 }
 
 .final-box{
-  border-radius:30px;
-  padding:65px 40px;
   text-align:center;
-  border:1px solid rgba(216,180,119,.25);
+  padding:70px 30px;
+  border-radius:30px;
+  border:1px solid rgba(228,189,120,.23);
   background:
-    radial-gradient(circle at 50% 0%,rgba(216,180,119,.16),transparent 55%),
-    #111113;
+    radial-gradient(circle at 50% 0,rgba(228,189,120,.13),transparent 55%),
+    var(--panel);
 }
 
 .final-box h2{
-  font-size:clamp(35px,5vw,55px);
+  font-size:clamp(38px,5vw,58px);
+  letter-spacing:-3px;
   margin-bottom:15px;
 }
 
@@ -643,34 +653,20 @@ a{
   margin-bottom:28px;
 }
 
-
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
-  border-top:1px solid var(--line);
   padding:35px 5%;
   display:flex;
   justify-content:space-between;
+  border-top:1px solid var(--line);
   color:#666;
-  font-size:11px;
+  font-size:10px;
 }
 
-footer strong{
-  color:#aaa;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:950px){
-
-  .nav{
-    padding:0 20px;
-  }
 
   .navlinks{
     display:none;
@@ -681,11 +677,7 @@ footer strong{
     padding-top:120px;
   }
 
-  .hero h1{
-    font-size:57px;
-  }
-
-  .grid{
+  .features{
     grid-template-columns:1fr 1fr;
   }
 
@@ -697,59 +689,51 @@ footer strong{
 @media(max-width:620px){
 
   .nav{
-    height:68px;
+    padding:0 18px;
   }
 
-  .brand{
+  .logo{
     font-size:16px;
   }
 
-  .navbtn{
-    padding:10px 14px;
-    font-size:10px;
+  .nav-cta{
+    padding:9px 12px;
+    font-size:9px;
   }
 
   .hero{
-    padding:105px 17px 55px;
-    gap:40px;
+    padding:105px 16px 60px;
+    gap:45px;
   }
 
   .hero h1{
-    font-size:48px;
-    letter-spacing:-2px;
+    font-size:49px;
+    letter-spacing:-3px;
   }
 
-  .hero-copy{
-    font-size:14px;
+  .hero h1 em{
+    letter-spacing:-3px;
   }
 
-  .stats{
-    gap:22px;
+  .metrics{
+    gap:20px;
   }
 
-  .stat strong{
+  .metric strong{
     font-size:18px;
-  }
-
-  .ai-window{
-    border-radius:24px;
-  }
-
-  .messages{
-    height:400px;
-  }
-
-  .grid,
-  .treatments{
-    grid-template-columns:1fr;
   }
 
   .section{
     padding:75px 17px;
   }
 
+  .features,
+  .treatments{
+    grid-template-columns:1fr;
+  }
+
   .quote{
-    padding:35px 22px;
+    padding:40px 20px;
   }
 
   .quote p{
@@ -757,75 +741,64 @@ footer strong{
   }
 
   .final{
-    padding:10px 17px 70px;
+    padding:0 17px 70px;
   }
 
   .final-box{
-    padding:45px 20px;
+    padding:50px 20px;
   }
 
   footer{
-    padding:30px 20px;
     flex-direction:column;
     gap:10px;
+    padding:30px 20px;
   }
 }
-
 </style>
 </head>
 
-
 <body>
-
-
-<!-- =========================
-     NAV
-========================= -->
 
 <header class="nav">
 
-  <div class="brand">
-    LUXE <span>AI</span>
+  <div class="logo">
+    AURA <span>AI</span>
   </div>
 
   <nav class="navlinks">
     <a href="#experience">Experience</a>
     <a href="#treatments">Treatments</a>
-    <a href="#why">Why LUXE</a>
+    <a href="#why">Why AURA</a>
   </nav>
 
-  <button class="navbtn" onclick="startAppointment()">
-    BOOK APPOINTMENT
+  <button class="nav-cta" onclick="startAppointment()">
+    BOOK NOW
   </button>
 
 </header>
 
-
-<!-- =========================
-     HERO
-========================= -->
 
 <section class="hero" id="experience">
 
   <div>
 
     <div class="eyebrow">
-      <span class="dot"></span>
-      24/7 DIGITAL FRONT DESK
+      <span class="live-dot"></span>
+      YOUR 24/7 AI FRONT DESK
     </div>
 
     <h1>
-      Your clinic,
-      <span>always available.</span>
+      Your clinic.
+      <em>Always on.</em>
     </h1>
 
     <p class="hero-copy">
-      Meet LUXE AI — a premium virtual receptionist designed
-      to answer questions, explain treatments and guide every
-      visitor toward the right next step.
+      Meet AURA AI — a sophisticated digital receptionist
+      designed to answer questions, guide visitors through
+      treatments and turn conversations into appointment requests.
     </p>
 
-    <div class="hero-actions">
+    <div class="actions">
 
       <button class="primary"
               onclick="startAppointment()">
@@ -833,25 +806,25 @@ footer strong{
       </button>
 
       <button class="secondary"
-              onclick="document.querySelector('.ai-window').scrollIntoView({behavior:'smooth'})">
-        Talk to LUXE AI
+              onclick="document.querySelector('.chat').scrollIntoView({behavior:'smooth'})">
+        Talk to AURA AI
       </button>
 
     </div>
 
-    <div class="stats">
+    <div class="metrics">
 
-      <div class="stat">
+      <div class="metric">
         <strong>24/7</strong>
         <span>Always available</span>
       </div>
 
-      <div class="stat">
-        <strong>&lt;1 min</strong>
-        <span>First response</span>
+      <div class="metric">
+        <strong>&lt;1m</strong>
+        <span>Fast response</span>
       </div>
 
-      <div class="stat">
+      <div class="metric">
         <strong>∞</strong>
         <span>Conversations</span>
       </div>
@@ -861,29 +834,29 @@ footer strong{
   </div>
 
 
-  <!-- AI CHAT -->
+  <div class="chat-wrap">
 
-  <div class="ai-shell">
+    <div class="chat-glow"></div>
 
-    <div class="glow"></div>
+    <div class="chat">
 
-    <div class="ai-window">
+      <div class="chat-header">
 
-      <div class="ai-top">
-
-        <div class="ai-avatar">
+        <div class="ai-orb">
           ✦
         </div>
 
         <div>
+
           <div class="ai-name">
-            LUXE AI Receptionist
+            AURA AI Receptionist
           </div>
 
-          <div class="ai-status">
-            <span class="status-dot"></span>
+          <div class="ai-sub">
+            <span class="online"></span>
             ONLINE • READY TO HELP
           </div>
+
         </div>
 
       </div>
@@ -891,16 +864,15 @@ footer strong{
 
       <div class="messages" id="messages">
 
-        <div class="msg bot">
-          Merhaba 👋 Ben LUXE AI'ın sanal
-          resepsiyonistiyim. Size nasıl yardımcı
-          olabilirim?
+        <div class="message ai">
+          Hi! 👋 Welcome to AURA.
+          I'm your virtual receptionist.
         </div>
 
-        <div class="msg bot">
-          Tedaviler, fiyatlandırma, çalışma
-          saatleri veya <b>randevu</b> konusunda
-          yardımcı olabilirim.
+        <div class="message ai">
+          I can help with treatments, pricing,
+          general questions or booking an appointment.
+          What can I help you with today?
         </div>
 
       </div>
@@ -908,45 +880,44 @@ footer strong{
 
       <div class="quick">
 
-        <button onclick="ask('Botox hakkında bilgi verir misin?')">
+        <button onclick="ask('Tell me about Botox')">
           Botox
         </button>
 
-        <button onclick="ask('Dolgu hakkında bilgi verir misin?')">
-          Dolgu
+        <button onclick="ask('Tell me about dermal fillers')">
+          Fillers
         </button>
 
-        <button onclick="ask('Fiyatlar nasıl?')">
-          Fiyatlar
+        <button onclick="ask('How much do treatments cost?')">
+          Pricing
         </button>
 
         <button onclick="startAppointment()">
-          📅 Randevu
+          📅 Book
         </button>
 
       </div>
 
 
-      <div class="input-row">
+      <div class="input">
 
         <input
           id="input"
-          type="text"
-          placeholder="LUXE AI'a bir şey sorun..."
+          placeholder="Ask AURA anything..."
           autocomplete="off"
-          onkeydown="if(event.key==='Enter') sendMessage()"
+          onkeydown="if(event.key==='Enter') send()"
         >
 
         <button
           class="send"
-          onclick="sendMessage()">
+          onclick="send()">
           →
         </button>
 
       </div>
 
-      <div class="demo-note">
-        LUXE AI demo • Genel bilgilendirme amaçlıdır.
+      <div class="note">
+        General information only • Consult a qualified professional for medical advice.
       </div>
 
     </div>
@@ -955,116 +926,82 @@ footer strong{
 
 </section>
 
-
-<!-- =========================
-     WHY LUXE
-========================= -->
 
 <section class="section" id="why">
 
   <div class="section-head">
 
     <div class="kicker">
-      THE NEW FRONT DESK
+      THE DIGITAL FRONT DESK
     </div>
 
     <h2>
-      İnsan gibi konuşur.
-      Markanız gibi davranır.
+      Beautiful on the outside.
+      Intelligent underneath.
     </h2>
 
     <p>
-      LUXE AI, ziyaretçilerinizi boş bir form veya
-      soğuk otomatik mesajla karşılamak yerine,
-      doğal bir konuşma deneyimi sunar.
+      AURA creates a premium first impression while guiding
+      visitors naturally toward the information or action they need.
     </p>
 
   </div>
 
 
-  <div class="grid">
+  <div class="features">
 
-    <div class="card">
-
-      <div class="icon">✦</div>
-
+    <div class="feature">
+      <div class="feature-icon">✦</div>
       <h3>Natural Conversations</h3>
-
       <p>
-        Ziyaretçiler soru sorar, LUXE AI bağlama
-        uygun ve anlaşılır cevaplarla karşılık verir.
+        Visitors can ask questions in their own words
+        instead of navigating complicated menus.
       </p>
-
     </div>
 
-
-    <div class="card">
-
-      <div class="icon">◈</div>
-
+    <div class="feature">
+      <div class="feature-icon">◈</div>
       <h3>Appointment Flow</h3>
-
       <p>
-        Randevu talebini adım adım toplar ve
-        ziyaretçiyi sürecin sonunda net bir özete ulaştırır.
+        Guide a visitor through name, treatment,
+        preferred date, time and contact details.
       </p>
-
     </div>
 
-
-    <div class="card">
-
-      <div class="icon">◉</div>
-
+    <div class="feature">
+      <div class="feature-icon">◉</div>
       <h3>Always Available</h3>
-
       <p>
-        Mesai saatleri dışında bile ziyaretçiniz
-        soru sorabilir ve randevu talebi oluşturabilir.
+        Your digital front desk keeps conversations
+        going even outside normal business hours.
       </p>
-
     </div>
 
-
-    <div class="card">
-
-      <div class="icon">◇</div>
-
+    <div class="feature">
+      <div class="feature-icon">◇</div>
       <h3>Premium Experience</h3>
-
       <p>
-        Tasarım, animasyonlar ve mikro etkileşimler
-        premium klinik deneyimi için tasarlandı.
+        A polished interface designed to feel
+        closer to a luxury concierge than a basic chatbot.
       </p>
-
     </div>
 
-
-    <div class="card">
-
-      <div class="icon">+</div>
-
+    <div class="feature">
+      <div class="feature-icon">+</div>
       <h3>Lead Capture</h3>
-
       <p>
-        İsim, telefon, işlem ve tercih edilen zaman
-        gibi bilgileri konuşma içerisinde toplar.
+        Collect useful information through a natural
+        conversation instead of a cold form.
       </p>
-
     </div>
 
-
-    <div class="card">
-
-      <div class="icon">↗</div>
-
+    <div class="feature">
+      <div class="feature-icon">↗</div>
       <h3>Conversion Focused</h3>
-
       <p>
-        Amaç sadece soru cevaplamak değil;
-        ziyaretçiyi doğru sonraki adıma yönlendirmektir.
+        Move visitors from curiosity to a clear
+        next step without overwhelming them.
       </p>
-
     </div>
 
   </div>
@@ -1072,23 +1009,18 @@ footer strong{
 </section>
 
 
-<!-- =========================
-     TREATMENTS
-========================= -->
-
 <section class="section" id="treatments">
 
   <div class="section-head">
 
     <div class="kicker">
-      SIGNATURE TREATMENTS
+      SIGNATURE SERVICES
     </div>
 
     <h2>
-      Ask. Discover.
-      <br>
+      Explore the
       <span style="color:var(--gold);font-family:Georgia,serif;font-style:italic;">
-        Experience.
+        possibilities.
       </span>
     </h2>
 
@@ -1098,68 +1030,45 @@ footer strong{
   <div class="treatments">
 
     <div class="treatment">
-
       <small>AESTHETICS</small>
-
       <h3>Botox</h3>
-
       <p>
-        Mimik çizgilerinin görünümünü azaltmaya
-        yönelik profesyonel uygulamalar.
+        A professional aesthetic treatment commonly used
+        to temporarily reduce the appearance of expression lines.
       </p>
-
     </div>
 
-
     <div class="treatment">
-
       <small>CONTOUR</small>
-
       <h3>Dermal Fillers</h3>
-
       <p>
-        Hacim, kontur ve yüz oranlarının
-        profesyonel değerlendirilmesi.
+        Injectable treatments that may be used to restore
+        volume or enhance selected facial contours.
       </p>
-
     </div>
 
-
     <div class="treatment">
-
       <small>SKIN</small>
-
       <h3>Skin Treatments</h3>
-
       <p>
-        Cilt kalitesini desteklemeye yönelik
-        profesyonel bakım seçenekleri.
+        Professional options designed to support
+        healthy-looking, refreshed skin.
       </p>
-
     </div>
 
-
     <div class="treatment">
-
       <small>CONSULTATION</small>
-
       <h3>Personal Plan</h3>
-
       <p>
-        İhtiyaçlarınıza göre uzman değerlendirmesi
-        ve kişiselleştirilmiş yaklaşım.
+        A consultation helps determine which approach
+        may be appropriate for an individual's goals.
       </p>
-
     </div>
 
   </div>
 
 </section>
 
-
-<!-- =========================
-     TESTIMONIAL
-========================= -->
 
 <section class="section">
 
@@ -1170,22 +1079,18 @@ footer strong{
     </div>
 
     <p>
-      “The first impression of our clinic now feels
-      exactly as premium as the experience inside.”
+      “A first impression that finally feels as premium
+      as the experience inside the clinic.”
     </p>
 
-    <small>
-      — LUXE CLIENT EXPERIENCE
-    </small>
+    <span>
+      AURA CLIENT EXPERIENCE
+    </span>
 
   </div>
 
 </section>
 
-
-<!-- =========================
-     FINAL CTA
-========================= -->
 
 <section class="final">
 
@@ -1196,12 +1101,11 @@ footer strong{
     </div>
 
     <h2>
-      Start your LUXE experience.
+      Start the conversation.
     </h2>
 
     <p>
-      Talk to our virtual receptionist and
-      request your appointment in minutes.
+      Ask a question or request an appointment with AURA AI.
     </p>
 
     <button
@@ -1218,25 +1122,23 @@ footer strong{
 <footer>
 
   <div>
-    © 2026 <strong>LUXE AI</strong>
+    © 2026 <strong>AURA AI</strong>
   </div>
 
   <div>
-    Premium Digital Receptionist
+    Intelligent Digital Receptionist
   </div>
 
 </footer>
 
 
-
 <script>
 
-/* =========================================
-   CHAT SYSTEM
-========================================= */
+const messages =
+  document.getElementById("messages");
 
-const messages = document.getElementById("messages");
-const input = document.getElementById("input");
+const input =
+  document.getElementById("input");
 
 let appointment = {
   active:false,
@@ -1249,38 +1151,51 @@ let appointment = {
 };
 
 
-/* ADD MESSAGE */
+function escapeHTML(value){
 
-function addMessage(text,type){
-
-  const msg = document.createElement("div");
-
-  msg.className = "msg " + type;
-
-  msg.innerHTML = text;
-
-  messages.appendChild(msg);
-
-  messages.scrollTop = messages.scrollHeight;
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
 
-/* TYPING */
+function addMessage(text,type){
+
+  const message =
+    document.createElement("div");
+
+  message.className =
+    "message " + type;
+
+  message.innerHTML = text;
+
+  messages.appendChild(message);
+
+  messages.scrollTop =
+    messages.scrollHeight;
+}
+
 
 function showTyping(){
 
-  const typing = document.createElement("div");
+  const typing =
+    document.createElement("div");
 
-  typing.className = "msg bot typing";
+  typing.className =
+    "message ai typing";
 
-  typing.id = "typing";
+  typing.id="typing";
 
   typing.innerHTML =
     "<i></i><i></i><i></i>";
 
   messages.appendChild(typing);
 
-  messages.scrollTop = messages.scrollHeight;
+  messages.scrollTop =
+    messages.scrollHeight;
 }
 
 
@@ -1289,18 +1204,16 @@ function hideTyping(){
   const typing =
     document.getElementById("typing");
 
-  if(typing){
-    typing.remove();
-  }
-
+  if(typing) typing.remove();
 }
 
 
-/* ASK */
-
 function ask(text){
 
-  addMessage(text,"user");
+  addMessage(
+    escapeHTML(text),
+    "user"
+  );
 
   showTyping();
 
@@ -1309,21 +1222,19 @@ function ask(text){
     hideTyping();
 
     if(appointment.active){
-      handleAppointment(text);
+      appointmentFlow(text);
     }else{
-      generateResponse(text);
+      answer(text);
     }
 
   },650);
-
 }
 
 
-/* SEND */
+function send(){
 
-function sendMessage(){
-
-  const text = input.value.trim();
+  const text =
+    input.value.trim();
 
   if(!text) return;
 
@@ -1333,16 +1244,13 @@ function sendMessage(){
 }
 
 
-/* =========================================
-   NORMAL AI RESPONSES
-========================================= */
+/* NORMAL CONVERSATION */
 
-function generateResponse(text){
+function answer(text){
 
-  const t = text.toLowerCase();
+  const t =
+    text.toLowerCase();
 
-
-  /* BOT TOX */
 
   if(
     t.includes("botox") ||
@@ -1350,133 +1258,117 @@ function generateResponse(text){
   ){
 
     addMessage(
-      "Botox, belirli mimik kaslarının hareketini geçici olarak azaltarak bazı ince çizgilerin ve kırışıklıkların görünümünü azaltmaya yardımcı olan bir uygulamadır. ✨<br><br>"+
-      "Uygunluk, doz ve uygulama bölgeleri kişisel değerlendirmeye göre belirlenir.<br><br>"+
-      "İsterseniz sizin için bir danışmanlık randevusu oluşturabilirim.",
-      "bot"
+      "Botox is commonly used to temporarily reduce the appearance of certain expression lines. ✨<br><br>"+
+      "Treatment suitability, dosage and placement should always be determined by a qualified professional after an individual assessment.<br><br>"+
+      "Would you like me to help you request a consultation?",
+      "ai"
     );
 
     return;
   }
 
 
-  /* FILLER */
-
   if(
-    t.includes("dolgu") ||
-    t.includes("filler")
+    t.includes("filler") ||
+    t.includes("fillers") ||
+    t.includes("dermal")
   ){
 
     addMessage(
-      "Dermal dolgular; yüzün belirli bölgelerinde hacim, kontur veya oran desteği amacıyla kullanılabilir. ✨<br><br>"+
-      "Hangi ürünün ve tekniğin uygun olduğu uzman değerlendirmesiyle belirlenir.<br><br>"+
-      "İsterseniz danışmanlık için randevu oluşturabiliriz.",
-      "bot"
+      "Dermal fillers may be used to restore volume or enhance selected facial contours. ✨<br><br>"+
+      "The appropriate product and technique depend on the individual's anatomy and goals.<br><br>"+
+      "I can help you request a consultation if you'd like.",
+      "ai"
     );
 
     return;
   }
 
 
-  /* PRICE */
-
   if(
-    t.includes("fiyat") ||
-    t.includes("ücret") ||
-    t.includes("ne kadar") ||
-    t.includes("kaç tl")
+    t.includes("price") ||
+    t.includes("pricing") ||
+    t.includes("cost") ||
+    t.includes("how much")
   ){
 
     addMessage(
-      "Fiyatlandırma; seçilen işlem, kullanılan ürün ve kişisel değerlendirmeye göre değişebilir. 💫<br><br>"+
-      "En doğru güncel fiyat için kliniğin ekibinden bilgi alınması gerekir.<br><br>"+
-      "İsterseniz randevu talebinizi şimdi oluşturabilirim.",
-      "bot"
+      "Treatment pricing can vary depending on the procedure, products used and individual treatment plan. 💫<br><br>"+
+      "For an accurate current quote, the clinic team should confirm the details.<br><br>"+
+      "Would you like to request an appointment?",
+      "ai"
     );
 
     return;
   }
 
 
-  /* HOURS */
-
   if(
-    t.includes("saat") ||
-    t.includes("açık") ||
-    t.includes("çalışma")
+    t.includes("hour") ||
+    t.includes("open") ||
+    t.includes("closed")
   ){
 
     addMessage(
-      "Ben LUXE AI olarak 7/24 buradayım. 🕐<br><br>"+
-      "Kliniğin güncel çalışma saatleri ve müsaitlik durumu için ekibimizle iletişime geçebilirsiniz.",
-      "bot"
+      "I'm available 24/7 to answer general questions. 🕐<br><br>"+
+      "For the clinic's current opening hours and availability, please confirm with the clinic team.",
+      "ai"
     );
 
     return;
   }
 
 
-  /* LOCATION */
-
   if(
-    t.includes("nerede") ||
-    t.includes("adres") ||
-    t.includes("konum")
+    t.includes("where") ||
+    t.includes("address") ||
+    t.includes("location")
   ){
 
     addMessage(
-      "Kliniğimizin adres ve ulaşım bilgilerini ekipten doğrulayabilirsiniz. 📍<br><br>"+
-      "İsterseniz önce randevu talebinizi oluşturmanıza yardımcı olabilirim.",
-      "bot"
+      "I'd be happy to help with the clinic location. 📍<br><br>"+
+      "Please use the clinic's official contact information for the current address.",
+      "ai"
     );
 
     return;
   }
 
 
-  /* HELLO */
-
   if(
-    t.includes("merhaba") ||
-    t.includes("selam") ||
     t.includes("hello") ||
+    t.includes("hi") ||
     t.includes("hey")
   ){
 
     addMessage(
-      "Merhaba! ✨ LUXE AI'a hoş geldiniz.<br><br>"+
-      "Size Botox, dolgu, cilt uygulamaları, fiyatlandırma veya randevu konusunda yardımcı olabilirim.",
-      "bot"
+      "Hello! ✨ Welcome to AURA.<br><br>"+
+      "I can help with treatments, pricing, general questions or appointment requests.",
+      "ai"
     );
 
     return;
   }
 
 
-  /* THANKS */
-
   if(
-    t.includes("teşekkür") ||
-    t.includes("sağ ol") ||
-    t.includes("eyvallah")
+    t.includes("thank")
   ){
 
     addMessage(
-      "Rica ederim. 🤍 Başka bir konuda yardımcı olmaktan memnuniyet duyarım.",
-      "bot"
+      "You're very welcome. 🤍 Is there anything else I can help you with?",
+      "ai"
     );
 
     return;
   }
 
 
-  /* APPOINTMENT */
-
   if(
-    t.includes("randevu") ||
-    t.includes("rezervasyon") ||
     t.includes("appointment") ||
-    t.includes("gelmek")
+    t.includes("book") ||
+    t.includes("reservation") ||
+    t.includes("consultation")
   ){
 
     startAppointment();
@@ -1485,25 +1377,22 @@ function generateResponse(text){
   }
 
 
-  /* DEFAULT */
-
   addMessage(
-    "Tabii, yardımcı olabilirim. 😊<br><br>"+
-    "Şunlardan birini sorabilirsiniz:<br>"+
-    "• Botox nedir?<br>"+
-    "• Dolgu hakkında bilgi<br>"+
-    "• Fiyatlar nasıl?<br>"+
-    "• Çalışma saatleri<br>"+
-    "• Randevu almak istiyorum",
-    "bot"
+    "Absolutely. I'm here to help. ✨<br><br>"+
+    "You can ask me about:<br>"+
+    "• Botox<br>"+
+    "• Dermal fillers<br>"+
+    "• Treatment pricing<br>"+
+    "• Clinic hours<br>"+
+    "• Appointment requests<br><br>"+
+    "What would you like to know?",
+    "ai"
   );
 
 }
 
 
-/* =========================================
-   APPOINTMENT SYSTEM
-========================================= */
+/* APPOINTMENT */
 
 function startAppointment(){
 
@@ -1518,20 +1407,16 @@ function startAppointment(){
   };
 
   addMessage(
-    "Harika! 📅 Randevu talebinizi birlikte oluşturalım.<br><br>"+
-    "Öncelikle <b>adınız ve soyadınız</b> nedir?",
-    "bot"
+    "Absolutely. Let's get your appointment request started. 📅<br><br>"+
+    "First, may I have your <b>full name</b>?",
+    "ai"
   );
 
   input.focus();
 }
 
 
-/* APPOINTMENT HANDLER */
-
-function handleAppointment(text){
-
-  /* NAME */
+function appointmentFlow(text){
 
   if(appointment.step===1){
 
@@ -1540,17 +1425,16 @@ function handleAppointment(text){
     appointment.step=2;
 
     addMessage(
-      "Memnun oldum, <b>"+escapeHTML(text)+"</b>. ✨<br><br>"+
-      "Hangi işlem için randevu almak istersiniz?<br><br>"+
-      "Örneğin: <b>Botox</b>, <b>Dolgu</b> veya <b>Cilt Bakımı</b>.",
-      "bot"
+      "Lovely to meet you, <b>"+
+      escapeHTML(text)+
+      "</b>. ✨<br><br>"+
+      "Which <b>treatment</b> are you interested in?",
+      "ai"
     );
 
     return;
   }
 
-
-  /* TREATMENT */
 
   if(appointment.step===2){
 
@@ -1559,17 +1443,14 @@ function handleAppointment(text){
     appointment.step=3;
 
     addMessage(
-      "Tamamdır. ✨<br><br>"+
-      "<b>"+escapeHTML(text)+"</b> için randevu talebinizi oluşturuyorum.<br><br>"+
-      "Hangi <b>gün</b> sizin için uygun?",
-      "bot"
+      "Perfect. When would you prefer to visit?<br><br>"+
+      "Please enter your preferred <b>date</b>.",
+      "ai"
     );
 
     return;
   }
 
-
-  /* DATE */
 
   if(appointment.step===3){
 
@@ -1578,17 +1459,16 @@ function handleAppointment(text){
     appointment.step=4;
 
     addMessage(
-      "Not aldım. 📅 <b>"+escapeHTML(text)+"</b><br><br>"+
-      "Tercih ettiğiniz <b>saat</b> nedir?<br><br>"+
-      "Örneğin: <b>14:30</b>",
-      "bot"
+      "Got it. 📅 <b>"+
+      escapeHTML(text)+
+      "</b><br><br>"+
+      "What <b>time</b> would you prefer?",
+      "ai"
     );
 
     return;
   }
 
-
-  /* TIME */
 
   if(appointment.step===4){
 
@@ -1597,91 +1477,63 @@ function handleAppointment(text){
     appointment.step=5;
 
     addMessage(
-      "Harika. ⏰ <b>"+escapeHTML(text)+"</b><br><br>"+
-      "Son olarak size ulaşabileceğimiz <b>telefon numaranızı</b> yazabilir misiniz?",
-      "bot"
+      "Great. ⏰ <b>"+
+      escapeHTML(text)+
+      "</b><br><br>"+
+      "Finally, what is the best <b>phone number</b> for the clinic to reach you?",
+      "ai"
     );
 
     return;
   }
 
-
-  /* PHONE */
 
   if(appointment.step===5){
 
     appointment.phone=text;
 
-    appointment.step=6;
+    appointment.active=false;
 
-    setTimeout(()=>{
-      showAppointmentSummary();
-    },300);
+    showSummary();
 
-    return;
   }
 
 }
 
 
-/* SUMMARY */
-
-function showAppointmentSummary(){
+function showSummary(){
 
   addMessage(
-    "<div style='margin-bottom:8px;font-size:16px'><b>✨ Randevu Talebi Hazır</b></div>"+
-    "<div style='line-height:1.9'>"+
-    "👤 <b>İsim:</b> "+escapeHTML(appointment.name)+"<br>"+
-    "💎 <b>İşlem:</b> "+escapeHTML(appointment.treatment)+"<br>"+
-    "📅 <b>Tarih:</b> "+escapeHTML(appointment.date)+"<br>"+
-    "⏰ <b>Saat:</b> "+escapeHTML(appointment.time)+"<br>"+
-    "📞 <b>Telefon:</b> "+escapeHTML(appointment.phone)+
-    "</div>"+
+    "<b>✨ Appointment Request Ready</b><br><br>"+
+    "👤 <b>Name:</b> "+
+    escapeHTML(appointment.name)+
     "<br>"+
-    "✅ Bilgileriniz alındı. Klinik ekibinin uygunluğu doğrulaması ve sizinle iletişime geçmesi gerekir.",
-    "bot"
+    "💎 <b>Treatment:</b> "+
+    escapeHTML(appointment.treatment)+
+    "<br>"+
+    "📅 <b>Date:</b> "+
+    escapeHTML(appointment.date)+
+    "<br>"+
+    "⏰ <b>Time:</b> "+
+    escapeHTML(appointment.time)+
+    "<br>"+
+    "📞 <b>Phone:</b> "+
+    escapeHTML(appointment.phone)+
+    "<br><br>"+
+    "✅ Your request has been collected. The clinic team should confirm availability and contact you directly.",
+    "ai"
   );
-
-  appointment.active=false;
 
   setTimeout(()=>{
 
     addMessage(
-      "Başka bir konuda yardımcı olmamı ister misiniz? 🤍",
-      "bot"
+      "Is there anything else I can help you with today? 🤍",
+      "ai"
     );
 
-  },800);
+  },700);
 
 }
-
-
-/* SECURITY */
-
-function escapeHTML(value){
-
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-}
-
-
-/* =========================================
-   GLOBAL KEYBOARD
-========================================= */
-
-document.addEventListener("keydown",(e)=>{
-
-  if(e.key==="Escape"){
-
-    input.blur();
-
-  }
-
-});
 
 </script>
 
